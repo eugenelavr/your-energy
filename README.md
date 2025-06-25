@@ -24,4 +24,4 @@ To install dependencies run: npm i
 1. Listeners catch events (main.js)
 2. Event handlers call api and handle results (/js/eventHandlers/)
 3. API functions fetch data from endpoints (/js/api/)
-4. Render functions render data into UI (/js/rendering/) ё
+4. Render functions render data into UI (/js/rendering/)
