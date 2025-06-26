@@ -6,10 +6,13 @@ import {
   setupGiveRatingListener,
 } from './listeners/modals-listeners.js';
 
+import { handleQuoteOfDay } from './handlers/static-handlers.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
   setupOpenExerciseModalLister();
   setupGiveRatingListener();
+  handleQuoteOfDay();
 });
 
 document.addEventListener('keydown', event => {
