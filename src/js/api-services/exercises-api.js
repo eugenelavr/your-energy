@@ -24,4 +24,14 @@ export const exercisesApi = {
       throw error;
     }
   },
+
+  async quoteOfDay() {
+    try {
+      const { data } = await axios.get(`${API_ENDPOINT}/quote`);
+      return data;
+    } catch (error) {
+      toaster.showErrorToast(`Error fetching quote of the day: ${error}`);
+      throw error;
+    }
+  },
 };
