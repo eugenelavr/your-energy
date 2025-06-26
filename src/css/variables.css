@@ -8,6 +8,12 @@
   --gold: #eea10c; /** selected star */
   --light-blue-gray: #c6cdd1;
 
+  --rgba-bg-color: 4, 4, 4;
+  --rgba-black: 36, 36, 36;
+  --rgba-light-gray: 212, 212, 212;
+  --rgba-orange: 238, 161, 12;
+  --rgba-light: 244, 244, 244;
+
   /* Borders */
   --border-radius-lg: 30px;
   --border-radius-md: 20px;

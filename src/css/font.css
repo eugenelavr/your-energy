@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'DMSans';
-  src: url('../fonts/DMSans-Regular.woff2') format('woff2'),
+  src:
+    url('../fonts/DMSans-Regular.woff2') format('woff2'),
     url('../fonts/DMSans-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -8,7 +9,8 @@
 
 @font-face {
   font-family: 'DMSans';
-  src: url('../fonts/DMSans-Medium.woff2') format('woff2'),
+  src:
+    url('../fonts/DMSans-Medium.woff2') format('woff2'),
     url('../fonts/DMSans-Medium.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
@@ -16,7 +18,8 @@
 
 @font-face {
   font-family: 'DMSans';
-  src: url('../fonts/DMSans-Italic.woff2') format('woff2'),
+  src:
+    url('../fonts/DMSans-Italic.woff2') format('woff2'),
     url('../fonts/DMSans-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
