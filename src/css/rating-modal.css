@@ -1,0 +1,120 @@
+.rating-container {
+  width: 'auto';
+}
+
+@media only screen and (max-width: 768px) {
+  .rating-container {
+    min-width: 320px;
+    max-width: 375px;
+  }
+}
+
+.rating-modal-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 335px;
+  border-radius: 20px;
+  color: rgba(var(--rgba-light));
+  background-color: rgba(var(--rgba-black));
+}
+
+@media screen and (min-width: 768px) {
+  .rating-modal-form {
+    padding: 40px;
+    min-width: 430px;
+  }
+}
+
+.rating-modal-title {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: rgba(var(--rgba-light), 0.4);
+}
+
+.rating-modal-rating-block {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.rating-modal-rating-block input[type='radio'] {
+  display: none;
+}
+
+.rating-modal-rating-block label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.rating-modal-rating {
+  padding-top: 2px;
+  margin-right: 4px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: rgba(var(--rgba-light));
+}
+
+.rating-modal-rating-icon {
+  margin-right: 4px;
+  width: 14px;
+  height: 13px;
+  fill: rgba(var(--rgba-light), 0.2);
+  transition: var(--transition);
+}
+
+.rating-modal-form input[type='email'],
+.rating-modal-form textarea {
+  padding: 12px 14px;
+  background-color: transparent;
+  border: 1px solid rgba(var(--rgba-light));
+  color: rgba(var(--rgba-light));
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3em;
+}
+
+@media screen and (min-width: 768px) {
+  .rating-modal-form input[type='email'],
+  .rating-modal-form textarea {
+    font-size: 16px;
+    line-height: 1.5em;
+  }
+}
+
+.rating-modal-form input[type='email']::placeholder,
+.rating-modal-form textarea::placeholder {
+  color: rgba(var(--rgba-light), 0.6);
+}
+
+.rating-modal-email {
+  margin-top: 20px;
+  border-radius: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .rating-modal-email {
+    margin-top: 32px;
+  }
+}
+
+.rating-modal-comment {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  resize: none;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .rating-modal-comment {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+}
