@@ -12,6 +12,7 @@
 @import './exercises.css';
 @import './hero.css';
 @import './favorites.css';
+@import './burger-menu.css';
 
 body {
   font-family: var(--main-font-family);
