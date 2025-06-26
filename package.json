@@ -21,7 +21,8 @@
     "basiclightbox": "5.0.4",
     "izitoast": "^1.4.0",
     "modern-normalize": "^3.0.0",
-    "prettier": "^3.6.1",
+    "moment": "^2.30.1",
+    "prettier": "^3.6.1"
   },
   "description": "To install dependencies run: npm ci",
   "main": "vite.config.js"
