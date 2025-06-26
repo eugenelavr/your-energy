@@ -1,4 +1,5 @@
 import { renderQuote } from '../components/quote.js';
+import { exercisesApi } from '../api-services/exercises-api.js'
 
 const handleQuoteOfDay = async () => {
   const storedQuote = JSON.parse(localStorage.getItem('quoteDay'));
@@ -8,7 +9,7 @@ const handleQuoteOfDay = async () => {
     return;
   }
   try {
-    const { data } = await exercisesApi.quoteOfDay();
+    const data = await exercisesApi.quoteOfDay();
     const newQuoteData = {
       data: data,
       currentDate: currentDate,

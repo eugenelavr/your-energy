@@ -27,7 +27,7 @@ export const exercisesApi = {
 
   async quoteOfDay() {
     try {
-      const { data } = await axios.get(`${API_ENDPOINT}/quote`);
+      const { data } = await axios.get(`${API_URL}/quote`);
       return data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching quote of the day: ${error}`);
