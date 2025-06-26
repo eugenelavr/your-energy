@@ -4,8 +4,8 @@ const closeBtn = document.querySelector('.close-btn');
 document.addEventListener('click', event => {
   const svgIcon = event.target.closest('svg');
   if (!svgIcon) return;
-  const use = svgIcon.querySelector('use[href$="#burger-menu"]');
-  if (use) {
+  const nodeUse = svgIcon.querySelector('use[href$="#burger-menu"]');
+  if (nodeUse) {
     sidebar.classList.add('active');
   }
 });
