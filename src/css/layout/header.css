@@ -1,13 +1,3 @@
-:root {
-    --black-color: #242424;
-    --white-color: #f4f4f4;
-    --border-color: rgba(36, 36, 36, 0.1);
-    --shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
-        0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    --anim-duration: 250ms;
-    --anim-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .header {
     padding-top: 20px;
     padding-bottom: 80px;
@@ -56,23 +46,22 @@
         width: fit-content;
         padding: 8px 34px;
         border-radius: 60px;
-        background-color: var(--black-color);
+        background-color: var(--primary);
         box-shadow: var(--shadow);
     }
 
     .nav .menu-item {
         display: flex;
         border-radius: 30px;
-        color: var(--white-color);
-        background: var(--black-color);
-        transition-duration: var(--anim-duration);
-        transition-timing-function: var(--anim-timing-function);
+        color: var(--white);
+        background: var(--primary);
+        transition: var(--transition-fast);
         transition-property: background-color;
     }
 
     .nav .menu-item.active {
-        background: var(--white-color);
-        color: var(--black-color);
+        background: var(--white);
+        color: var(--primary);
         font-family: "DM Sans", sans-serif;
         font-size: 16px;
         font-style: normal;
@@ -98,9 +87,8 @@
         width: 44px;
         height: 44px;
         border-radius: 10px;
-        border: 1px solid var(--border-color);
-        transition-duration: var(--anim-duration);
-        transition-timing-function: var(--anim-timing-function);
+        border: 1px solid var(--primary-disabled);
+        transition: var(--transition-fast);
         transition-property: background-color;
     }
 
@@ -115,18 +103,17 @@
     }
 
     .nav .social-item svg {
-        fill: var(--black-color);
-        transition-duration: var(--anim-duration);
-        transition-timing-function: var(--anim-timing-function);
+        fill: var(--primary);
+        transition: var(--transition-fast);
         transition-property: fill;
     }
 
     .nav .social-item:hover {
-        background-color: var(--black-color);
+        background-color: var(--primary);
     }
 
     .nav .social-item:hover svg {
-        fill: var(--white-color);
+        fill: var(--white);
     }
 
 }
@@ -147,4 +134,5 @@ button {
     border: none;
     display: block;
     padding: 0;
-    background-color: transparent; }
+    background-color: transparent;
+}
