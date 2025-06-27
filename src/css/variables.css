@@ -41,7 +41,7 @@
 @media screen and (min-width: 768px) {
   :root {
     --main-padding: 1rem;
-    --container-max-width: 704px;
+    --container-max-width: 705px;
   }
 }
 

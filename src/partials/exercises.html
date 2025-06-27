@@ -1,15 +1,18 @@
-<section class="section-exercises">
-  <div class="container exercises-container">
-    <div class="exercises-cards">
-      <!--Placeholder for exercises cards -->
-    </div>
-    <aside class="quote-container">
-      <div class="box1-qoute">
+<section class="exercises container">
+  <div class="exercises-header">
+    <h2 class="exercises-title">Exercises</h2>
+    <ul class="exercises-categories"></ul>
+  </div>
+
+  <div class="exercises-container">
+    <div class="exercises-info">
+      <div class="quote-container">
         <svg width="34" height="32">
           <use href="./img/sprite.svg#quote"></use>
         </svg>
-        <div class="box1-quote">
-          <div class="quote-title-wrap">
+
+        <div>
+          <div class="quote-header">
             <h2 class="quote-title">Quote of the day</h2>
             <svg width="20" height="20">
               <use href="./img/sprite.svg#commas"></use>
@@ -18,6 +21,7 @@
           <div class="js-quote"></div>
         </div>
       </div>
+
       <div class="img-quote">
         <img
           src="./img/filters/women_des.jpg"
@@ -41,6 +45,7 @@
           loading="lazy"
         />
       </div>
+      
       <div class="box2-info">
         <svg class="news-icon">
           <use href="./img/sprite.svg#fluent_food"></use>
@@ -59,6 +64,10 @@
           </p>
         </div>
       </div>
-    </aside>
+    </div>
+    <div class="exercises-content">
+      <div class="exercises-list"></div>
+      <ul class="exercises-pagination"></ul>
+    </div>
   </div>
 </section>

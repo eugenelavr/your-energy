@@ -1,4 +1,4 @@
-import { exercisesApi } from '../api-services/exercises-api.js';
+import { exercisesApi } from '../api/exercises.api.js';
 import { toaster } from '../utils/utils.js';
 import { renderCategoryCards, renderPagination } from '../components/categories-component.js';
 
