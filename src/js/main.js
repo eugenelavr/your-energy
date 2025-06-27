@@ -7,12 +7,14 @@ import {
 } from './listeners/modals-listeners.js';
 
 import { handleQuoteOfDay } from './handlers/static-handlers.js';
+import { renderCategories } from './handlers/categories.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
   setupOpenExerciseModalLister();
   setupGiveRatingListener();
   handleQuoteOfDay();
+  renderCategories();
 });
 
 document.addEventListener('keydown', event => {
