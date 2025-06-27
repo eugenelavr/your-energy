@@ -20,15 +20,21 @@
 }
 .hero-title {
   grid-area: title;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
   font-size: 38px;
   font-weight: 400;
   font-style: normal;
   letter-spacing: -0.02em;
   line-height: 1;
   margin: 0;
+  max-width: 639px;
 
   @media screen and (min-width: 768px) {
     font-size: 74px;
+    gap: 16px;
   }
   svg {
     width: 38px;
