@@ -3,14 +3,7 @@
   padding-bottom: 48px;
 
 }
-.filters-title.container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top:32px;
-  margin-bottom: 32px;
-  
-}  
+
   .section-title {
   font-family: var(--main-font-family);
   font-weight: 400;

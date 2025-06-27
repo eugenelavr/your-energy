@@ -1,7 +1,7 @@
 import { exercisesApi } from '../api-services/exercises-api.js';
 
-
-import { renderExerciseList, renderPagination } from '../components/exercises.js';
+import { renderExerciseList } from '../components/exercises-list.js';
+import { renderPagination } from '../components/pagination.js';
 export const getFilters = async data => {
   const filtersSet = {
     bodyParts: new Set(),
@@ -32,53 +32,10 @@ export const getFilters = async data => {
   };
 };
 
-// export const handleFilteredExercises = async (filters = {}) => {
-//   try {
-//     const { bodypart, muscles, equipment, keyword } = filters;
-//
-//     const response = await exercisesApi.getExercises({
-//       filters: { bodypart, muscles, equipment, keyword },
-//     });
-//     const {page, perPage, totalPages,results} = response;
-//
-//     const filtersData = await getFilters(results);
-//     console.log('Filters data:', filtersData);
-//
-//     return results;
-//
-//   } catch (error) {
-//     console.error('Error fetching exercises:', error);
-//     return [];
-//   }
-// };
-
 const PER_PAGE = 12;
 let currentPage = 1;
 let latestFilters = {};
 
-// export const handleExercises = async (filters = {}, limit = PER_PAGE) => {
-//   try {
-//     const { bodypart, muscles, equipment, keyword } = filters;
-// 
-//     const response = await exercisesApi.getExercises({
-//       filters: { bodypart, muscles, equipment, keyword },
-//       limit: limit,
-//     });
-//     const { page, totalPages, results } = response;
-//     currentPage = page;
-// 
-// 
-//     console.log('exercises:', results);
-//     renderExerciseList(results);
-// 
-// 
-//    
-// 
-//   } catch (error) {
-//     console.error('Error fetching exercises:', error);
-//     return [];
-//   }
-// } 
 
 export const handlePagination = (currentPage, totalPages, action) => {
   renderPagination(currentPage, totalPages, action);
