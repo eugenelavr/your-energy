@@ -1,13 +1,9 @@
+const burgerBtn = document.querySelector('.menu-btn');
 const sidebar = document.querySelector('.sidebar');
 const closeBtn = document.querySelector('.close-btn');
 
-document.addEventListener('click', event => {
-  const svgIcon = event.target.closest('svg');
-  if (!svgIcon) return;
-  const nodeUse = svgIcon.querySelector('use[href$="#burger-menu"]');
-  if (nodeUse) {
-    sidebar.classList.add('active');
-  }
+burgerBtn.addEventListener('click', () => {
+  sidebar.classList.add('active');
 });
 
 closeBtn.addEventListener('click', () => {
