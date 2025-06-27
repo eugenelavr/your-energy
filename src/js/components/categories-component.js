@@ -1,4 +1,3 @@
-// Функція для рендерингу карток категорій
 export function renderCategoryCards(categories) {
   const categoriesList = document.querySelector('.categories__list');
   if (!categoriesList) return;
@@ -14,7 +13,6 @@ export function renderCategoryCards(categories) {
   `).join('');
 }
 
-// Функція для генерації номерів сторінок
 function generatePageNumbers(currentPage, totalPages) {
   const pages = [];
   const maxVisiblePages = 5;
@@ -55,12 +53,10 @@ function generatePageNumbers(currentPage, totalPages) {
   }).join('');
 }
 
-// Функція для рендерингу пагінації
 export function renderPagination(currentPage, totalPages) {
   const categoriesSection = document.querySelector('.categories');
   if (!categoriesSection) return;
 
-  // Видаляємо існуючу пагінацію
   const existingPagination = categoriesSection.querySelector('.pagination');
   if (existingPagination) {
     existingPagination.remove();
@@ -70,19 +66,9 @@ export function renderPagination(currentPage, totalPages) {
 
   const paginationHTML = `
     <div class="pagination">
-      <button class="pagination__btn pagination__prev" ${currentPage === 1 ? 'disabled' : ''}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
       <div class="pagination__pages">
         ${generatePageNumbers(currentPage, totalPages)}
       </div>
-      <button class="pagination__btn pagination__next" ${currentPage === totalPages ? 'disabled' : ''}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
     </div>
   `;
 

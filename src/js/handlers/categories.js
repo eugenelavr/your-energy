@@ -22,9 +22,9 @@ function updateActiveCategory(filter) {
 // Функція для завантаження категорій з API
 async function loadCategories(filter = currentFilter, page = 1) {
   if (isLoading) return;
-  
+
   isLoading = true;
-  
+
   try {
     // Показуємо індикатор завантаження
     const categoriesList = document.querySelector('.categories__list');
@@ -33,19 +33,19 @@ async function loadCategories(filter = currentFilter, page = 1) {
     }
 
     const response = await exercisesApi.getFilters({ filter, page, limit: 12 });
-    
+
     currentFilter = filter;
     currentPage = parseInt(response.page);
     totalPages = parseInt(response.totalPages);
-    
+
     renderCategoryCards(response.results);
     renderPagination(currentPage, totalPages);
     updateActiveCategory(filter);
-    
+
   } catch (error) {
     console.error('Error loading categories:', error);
     toaster.showErrorToast('Помилка завантаження категорій');
-    
+
     // Показуємо повідомлення про помилку
     const categoriesList = document.querySelector('.categories__list');
     if (categoriesList) {
@@ -60,7 +60,7 @@ async function loadCategories(filter = currentFilter, page = 1) {
 function handleCategoryClick(event) {
   const button = event.target.closest('.category');
   if (!button || button.classList.contains('active')) return;
-  
+
   const filter = button.textContent;
   loadCategories(filter, 1);
 }
@@ -68,7 +68,7 @@ function handleCategoryClick(event) {
 // Функція для обробки кліків по пагінації
 function handlePaginationClick(event) {
   const target = event.target;
-  
+
   if (target.classList.contains('pagination__prev')) {
     if (currentPage > 1) {
       loadCategories(currentFilter, currentPage - 1);
@@ -83,6 +83,13 @@ function handlePaginationClick(event) {
       loadCategories(currentFilter, page);
     }
   }
+
+  const targetElement = document.querySelector('.categories');
+  if (targetElement) {
+    targetElement.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
 }
 
 // Функція для ініціалізації обробників подій
@@ -92,7 +99,7 @@ function initializeEventListeners() {
   if (categoriesContainer) {
     categoriesContainer.addEventListener('click', handleCategoryClick);
   }
-  
+
   // Обробник для пагінації (делегування подій)
   document.addEventListener('click', handlePaginationClick);
 }
@@ -102,10 +109,10 @@ async function renderCategories() {
   try {
     // Ініціалізуємо обробники подій
     initializeEventListeners();
-    
+
     // Завантажуємо початкові категорії
     await loadCategories('Muscles', 1);
-    
+
   } catch (error) {
     console.error('Error initializing categories:', error);
     toaster.showErrorToast('Помилка ініціалізації категорій');
