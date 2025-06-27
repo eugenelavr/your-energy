@@ -20,56 +20,67 @@
   }
 
   .exercise-card {
-    background-color: red;
-    border: 1px solid var(--card-border);
-    border-radius: 15px;
-    padding: 16px;
-    transition: var(--transition);
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
     .exercise-header{
-        .badge{
-            background-color: blue;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 15px;
-        }
-        .rating{
-            background-color: yellow;
-            color: black;
-            padding: 4px 8px;
-            border-radius: 15px;
-        }
-        .exercise-link{
-            background-color: green;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 15px;
-        }
+          display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 10px;
+      
+    .badge {
+      background: #f3f3f3;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-weight: 600;
+    }
+
+    .rating {
+      color: #f7b500;
+      font-weight: 600;
+    }
+
+    .start-btn {
+      background: transparent;
+      border: none;
+      color: #333;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
     }
     .exercise-content{
-        .exercise-title{
-            font-size: 18px;
-            font-weight: 600;
-            color: #242424;
-        }
+    .exercise-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 8px;
+  }
         .exercise-icon{
             font-size: 14px;
             color: #757575;
         }
     }
-    .exercise-footer{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10px;
-        p{
-          font-weight: 200;
-        }
-        .footer-tag{
-          font-weight:800;
-        }
-   
+     .exercise-meta {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #666;
+
+    strong {
+      color: #000;
     }
+  }
+  
     
   }
 
