@@ -5,6 +5,7 @@ import {
   setupOpenExerciseModalLister,
   setupGiveRatingListener,
 } from './listeners/modals-listeners.js';
+import { handleExercisesWithPagination } from './handlers/exercises-handlers.js';
 
 import { handleQuoteOfDay } from './handlers/static-handlers.js';
 
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
   setupOpenExerciseModalLister();
   setupGiveRatingListener();
+  handleExercisesWithPagination()
   handleQuoteOfDay();
 });
 

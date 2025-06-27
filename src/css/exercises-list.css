@@ -16,7 +16,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(442px, 1fr));
     gap: 20px;
-    margin-top: 20px;
   }
 
   .exercise-card {
@@ -87,4 +86,26 @@
   .exercise-card:hover {
     transform: translateY(-4px);
   }
+
 }
+  .pagination {
+  display: flex;
+  overflow-x: hidden;
+  justify-content: center;
+  margin-top: 20px;
+
+  .page-item {
+    border: none;
+    border-radius: 50%;
+
+    margin: 0 5px;
+    cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
+      background-color: var(--primary);
+      color: var(--white)
+    }
+  }
+}
+

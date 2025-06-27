@@ -27,10 +27,31 @@ export const exercisesApi = {
 
   async quoteOfDay() {
     try {
-      const { data } = await axios.get(`${API_ENDPOINT}/quote`);
+      const { data } = await axios.get(`${API_URL}/quote`);
       return data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching quote of the day: ${error}`);
+      throw error;
+    }
+  },
+
+  async getExercises({ filters = {}, page = 1, limit = 114 } = {}) {
+    const { bodypart, muscles, equipment, keyword } = filters;
+
+    try {
+      const { data } = await axios.get(`${API_URL}/exercises`, {
+        params: {
+          bodypart: bodypart || '',
+          muscles: muscles || '',
+          equipment: equipment || '',
+          keyword: keyword || '',
+          page,
+          limit,
+        },
+      });
+      return data;
+    } catch (error) {
+      toaster.showErrorToast(`Error fetching exercises: ${error}`);
       throw error;
     }
   },
