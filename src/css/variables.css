@@ -7,6 +7,8 @@
   --primary-light-inactive: rgba(244, 244, 244, 0.2); /** not selected star */
   --gold: #eea10c; /** selected star */
   --light-blue-gray: #c6cdd1;
+  --text-secondary: rgba(36, 36, 36, 0.60);
+  --text-helper: rgba(244, 244, 244, 0.40);
   --shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
       0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 

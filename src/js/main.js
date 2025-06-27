@@ -8,6 +8,7 @@ import {
 
 import { handleExercises } from './components/exercises.js';
 import { handleQuoteOfDay } from './handlers/static-handlers.js';
+import { renderCategories } from './handlers/categories.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupGiveRatingListener();
   handleQuoteOfDay();
   handleExercises();
+  renderCategories();
 });
 
 document.addEventListener('keydown', event => {
