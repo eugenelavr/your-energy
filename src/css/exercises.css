@@ -1,31 +1,156 @@
-.quote-container {
+.exercises {
+  gap: 32px;
+  display: flex;
+  margin-top: 64px;
+  margin-bottom: 132px;
+  flex-direction: column;
+}
+
+.exercises-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.exercises-title {
+  font-size: 44px;
+  line-height: 48px;
+  color: var(--primary);
+  letter-spacing: -0.88px;
+}
+
+.exercises-categories {
+  gap: 20px;
+  display: flex;
+}
+
+.exercises-category-item {
+  gap: 4px;
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
-  gap: 20px;
 }
 
-@media screen and (min-width: 768px) {
-  .quote-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    row-gap: 32px;
-    column-gap: 16px;
-  }
+.exercises-category-link:hover,
+.exercises-category-item.active-category > .exercises-category-link {
+  color: var(--primary);
 }
 
-@media screen and (min-width: 1440px) {
-  .quote-container {
-    flex-direction: column;
-    margin-top: 0;
-    max-width: 444px;
-  }
+.exercises-category-item.active-category::after {
+  content: '';
+  z-index: -1;
+  width: 100%;
+  height: 4px;
+  display: block;
+
+  border-radius: 2px;
+  background-color: var(--primary);
+}
+
+.exercises-category-link {
+  cursor: pointer;
+  line-height: 24px;
+  color: #24242460;
+  transition: color 0.2s ease;
+}
+
+.exercises-container {
+  gap: 32px;
+  display: flex;
+}
+
+.exercises-info {
+  min-width: 444px;
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.exercises-content {
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.exercises-list {
+  display: flex;
+  row-gap: 32px;
+  flex-wrap: wrap;
+  column-gap: 15px;
+}
+
+.exercises-pagination {
+  gap: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.exercises-pagination li {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.exercises-pagination li.page-active {
+  border-radius: 100%;
+  border-color: var(--primary);
+}
+.exercises-pagination li.page-active a,
+.exercises-pagination li a:hover {
+  color: var(--primary);
+}
+.exercises-pagination li a {
+  cursor: pointer;
+  color: #d4d4d4;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.96px;
+  transition: color 0.2s ease;
+}
+
+.filter-item {
+  gap: 2px;
+  width: 290px;
+  height: 242px;
+  padding: 20px;
+  display: flex;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-transform: capitalize;
+}
+
+.filter-bg {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-y: center;
+}
+
+.filter-label {
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: var(--primary-light);
+}
+.filter-category {
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(244, 244, 244, 0.4);
 }
 
 /* #region box1 */
-.box1-qoute {
-  display: flex;
+.quote-container {
   gap: 18px;
+  display: flex;
   border-radius: 20px;
   width: 100%;
   padding: 20px;
@@ -33,7 +158,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .box1-qoute {
+  .quote-container {
     max-width: 400px;
     padding: 40px;
     gap: 16px;
@@ -41,12 +166,12 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .box1-qoute {
+  .quote-container {
     max-width: 444px;
   }
 }
 
-.quote-title-wrap {
+.quote-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,12 +179,12 @@
 }
 
 .quote-title {
-  line-height: 1;
-  margin-bottom: 8px;
-  font-family: var(--main-font-family);
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 6px;
   font-weight: 500;
-  font-size: 20px;
   color: var(--primary-light);
+  font-family: var(--main-font-family);
 }
 
 .quote-text {
@@ -77,11 +202,11 @@
   line-height: 24px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   .quote-title {
-    font-size: 24px;
-    line-height: 32px;
-    margin-bottom: 6px;
+    line-height: 1;
+    font-size: 20px;
+    margin-bottom: 8px;
   }
   .quote-text {
     margin-bottom: 8px;
@@ -93,11 +218,11 @@
 
 /* #region img */
 .img-quote img {
-  border-radius: 20px;
   width: 100%;
   min-height: 242px;
   overflow: hidden;
   object-fit: cover;
+  border-radius: 20px;
   background-color: var(--white);
 }
 
@@ -146,7 +271,6 @@
 }
 
 .time-info-title {
-  font-family: 'DM Sans';
   margin-bottom: 2px;
   font-size: 20px;
   font-weight: 500;
@@ -194,5 +318,51 @@
   .text-info {
     display: block;
     overflow: visible;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .exercises-container {
+    gap: 64px;
+    flex-direction: column-reverse;
+  }
+
+  .exercises-info {
+    row-gap: 32px;
+    column-gap: 16px;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .filter-item {
+    width: 225px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .exercises {
+    gap: 20px;
+  }
+
+  .exercises-header {
+    gap: 20px;
+    align-items: start;
+    flex-direction: column;
+  }
+  .exercises-container {
+    gap: 80px;
+  }
+
+  .exercises-list {
+    gap: 20px;
+  }
+
+  .filter-item {
+    width: 335px;
+    height: 225px;
+  }
+
+  .exercises-info {
+    gap: 20px;
   }
 }

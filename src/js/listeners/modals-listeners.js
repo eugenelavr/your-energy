@@ -1,8 +1,8 @@
+import { exercisesApi } from '../api';
 import { refs } from '../const/refs.js';
 import { modalsClasses } from '../const/modals-classes.js';
 import { renderGiveRatingModal } from '../components/rating-modal';
 import { formRatingValidation, toaster } from '../utils/utils.js';
-import { exercisesApi } from '../api-services/exercises-api.js';
 import {
   handleToggleFavorite,
   handleOpenExerciseModal,
