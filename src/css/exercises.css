@@ -13,9 +13,9 @@
 }
 
 .exercises-title {
-  color: #242424;
   font-size: 44px;
   line-height: 48px;
+  color: var(--primary);
   letter-spacing: -0.88px;
 }
 
@@ -32,7 +32,7 @@
 
 .exercises-category-link:hover,
 .exercises-category-item.active-category > .exercises-category-link {
-  color: #242424;
+  color: var(--primary);
 }
 
 .exercises-category-item.active-category::after {
@@ -43,7 +43,7 @@
   display: block;
 
   border-radius: 2px;
-  background-color: #242424;
+  background-color: var(--primary);
 }
 
 .exercises-category-link {
@@ -93,11 +93,11 @@
 
 .exercises-pagination li.page-active {
   border-radius: 100%;
-  border-color: #242424;
+  border-color: var(--primary);
 }
 .exercises-pagination li.page-active a,
 .exercises-pagination li a:hover {
-  color: #242424;
+  color: var(--primary);
 }
 .exercises-pagination li a {
   cursor: pointer;
