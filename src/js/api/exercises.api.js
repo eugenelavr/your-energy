@@ -14,6 +14,7 @@ export const exercisesApi = {
       return res.data;
     } catch (e) {
       console.error(e);
+      return { results: [], totalPages: 0, page: 1 };
     }
   },
   async fetchExercises({
@@ -35,7 +36,11 @@ export const exercisesApi = {
 
       const res = await client.get(url);
       return res.data;
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+  
+      return { results: [], totalPages: 0, page: 1 };
+    }
   },
   async getExerciseById(id) {
     try {
@@ -43,6 +48,7 @@ export const exercisesApi = {
       return data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching exercise by ID: ${error}`);
+      
       throw error;
     }
   },
