@@ -27,6 +27,7 @@ document.addEventListener('keydown', event => {
 
 const favoriteExercises = [
   {
+    _id: '64f389465ae26083f39b17a2',
     title: 'Air bike',
     burnedCalories: 312,
     time: '3 min',
@@ -35,6 +36,7 @@ const favoriteExercises = [
     favorite: true,
   },
   {
+    _id: '64f389465ae26083f39b17a3',
     title: '3/4 sit-up',
     burnedCalories: 220,
     time: '3 min',
@@ -43,6 +45,7 @@ const favoriteExercises = [
     favorite: true,
   },
   {
+    _id: '64f389465ae26083f39b17a4',
     title: '45° side ben',
     burnedCalories: 323,
     time: '3 min',
@@ -51,6 +54,7 @@ const favoriteExercises = [
     favorite: true,
   },
   {
+    _id: '64f389465ae26083f39b17a5',
     title: 'Barbell reverse preacher curl',
     burnedCalories: 153,
     time: '3 min',
@@ -59,6 +63,7 @@ const favoriteExercises = [
     favorite: true,
   },
   {
+    _id: '64f389465ae26083f39b17a6',
     title: 'Barbell rollerout',
     burnedCalories: 87,
     time: '3 min',
@@ -67,6 +72,7 @@ const favoriteExercises = [
     favorite: true,
   },
   {
+    _id: '64f389465ae26083f39b17a7',
     title: 'Barbell side split squat v. 2',
     burnedCalories: 60,
     time: '3 min',
@@ -81,6 +87,9 @@ favoriteExercises.forEach(ex => {
   localStorage.setItem(ex.title, JSON.stringify(ex));
 });
 
+
+const favoriteIds = favoriteExercises.map(ex => ex._id);
+localStorage.setItem('favorites', JSON.stringify(favoriteIds));
 
 document.addEventListener('DOMContentLoaded', function () {
   const favoritesList = document.querySelector('.favorites__list');
@@ -118,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const li = document.createElement('li');
     li.className = 'favorites__item';
     li.innerHTML = `
-      <div class="favorites__card card">
+      <div class="favorites__card card exercise-item" data-id="${item._id}">
         <div class="card__header">
           <div class="card__workout">
             <div class="card__label">WORKOUT</div>
@@ -164,23 +173,13 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     favoritesList.appendChild(li);
     li.querySelector('.card__delete').addEventListener('click', function () {
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        try {
-          const storedItem = JSON.parse(localStorage.getItem(key));
-          if (
-            storedItem &&
-            storedItem.favorite === true &&
-            storedItem.title === item.title
-          ) {
-            localStorage.removeItem(key);
-            break;
-          }
-        } catch (err) {
-          console.error(err.message);
-          
-        }
-      }
+       
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const updatedFavorites = favorites.filter(favId => favId !== item._id);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      
+ 
+      localStorage.removeItem(item.title);
 
       li.remove();
 
