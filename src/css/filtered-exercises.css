@@ -1,0 +1,197 @@
+
+
+  .filtered-exercises-cards-wrapper {
+    width: 100%;
+
+
+    .filtered-exercises-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
+      gap: 20px;
+    }
+  
+    .filtered-exercise-card {
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s;
+  
+    &:hover {
+      transform: translateY(-5px);
+    }
+      .exercise-header{
+      display: flex;
+      gap:24px;
+      justify-content:start;
+      align-items: center;
+      font-size: 12px;
+      margin-bottom: 24px;
+      text-transform: capitalize;
+      .badge {
+        font-size: 12px;
+        background: transparent;
+        border:1px solid var(--primary);
+        border-radius: 16px;
+        padding: 2px 8px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+  
+      .rating {
+        color: #f7b500;
+        font-weight: 400;
+      }
+  
+      .start-btn {
+        background: transparent;
+        border: none;
+        font-weight: 400;
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 0 0 auto;
+      }
+  
+      }
+      .exercise-content{
+      display: flex;
+      .exercise-title {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom:24px;
+      text-transform: capitalize;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      }
+      .exercise-icon{
+           height: 24px;
+            width: 24px;
+            margin-right: 16px;
+            vertical-align: middle;
+            display: inline-block;
+            fill:currentColor;
+          }
+      }
+       .exercise-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-direction: row;
+  
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      p{
+        margin: 0;
+        padding: 0; 
+        color: rgba(36, 36, 36, 0.4);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.5;
+
+      }
+      .meta-span {
+        color: var(--primary);
+          max-width: 32px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          opacity: 1;
+        
+      }
+    }
+  }
+  
+    .filtered-exercise-card:hover {
+      transform: translateY(-4px);
+    }
+  
+  }
+
+  @media screen and (min-width: 768px) {
+    .filtered-exercises-list {
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+  
+
+    .filtered-exercise-card {
+      padding: 16px;
+    }
+  
+    .filtered-pagination {
+      flex-wrap: wrap;
+    }
+  
+    .page-item {
+      margin: 4px;
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+    }
+    
+  }
+
+  @media screen and (min-width:1440px) {
+    .filtered-exercises-list {
+      grid-template-columns: repeat(auto-fill, minmax(442px, 1fr));
+    }
+  
+    .filtered-exercise-card {
+      padding: 16px 20px;
+    }
+  
+    .filtered-pagination {
+      flex-wrap: nowrap;
+    }
+  
+    .page-item {
+      margin: 0 8px;
+      width: 32px;
+      height: 32px;
+      font-size: 24px;
+    }
+    
+  }
+
+  .filtered-pagination {
+    display: flex;
+    overflow-x: hidden;
+    justify-content: center;
+    margin-top: 20px;
+  
+    .page-item {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 32px;
+      border: 1px solid var(--primary);
+      border-radius: 50%;
+  
+      margin: 0 8px;
+      cursor: pointer;
+      transition: var(--transition);
+  
+      &:hover {
+        background-color: var(--primary);
+        color: var(--white)
+      }
+    }
+    .page-item.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+  }
+
+  .hide{
+
+    display: none;
+  }
+  .exercises-container{
+    background: pink;
+  }
