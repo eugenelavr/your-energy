@@ -2,7 +2,7 @@ import { renderExerciseModal } from '../components/exercise-modal.js';
 import { refs } from '../const/refs.js';
 import { modalsClasses } from '../const/modals-classes.js';
 import { toaster } from '../utils/utils.js';
-import { exercisesApi } from '../api/exercises.api.js';
+import { exercisesApi } from '../api-services/exercises-api.js';
 import iconsPath from '../../img/sprite.svg';
 
 async function handleOpenExerciseModal(id) {
