@@ -5,6 +5,7 @@ import {
   setupOpenExerciseModalLister,
   setupGiveRatingListener,
 } from './listeners/modals-listeners.js';
+import { subscribeFormListener } from './listeners/subscribeFormListener.js';
 
 import { handleExercises } from './components/exercises.js';
 import { handleQuoteOfDay } from './handlers/static-handlers.js';
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
   setupOpenExerciseModalLister();
   setupGiveRatingListener();
+  subscribeFormListener();
   handleQuoteOfDay();
   handleExercises();
   renderCategories();
