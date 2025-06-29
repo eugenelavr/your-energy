@@ -23,111 +23,106 @@
 }
 
 @media screen and (min-width: 768px) {
-  header
-    .header {
-        padding-top: 24px;
-    }
+  header .header {
+    padding-top: 24px;
+  }
 
-    .nav .menu-btn {
-        display: none;
-    }
+  .nav .menu-btn {
+    display: none;
+  }
 
-    .nav .socials,
-    .nav .menu-items {
-        display: block;
-    }
+  .nav .socials,
+  .nav .menu-items {
+    display: block;
+  }
 
-    .nav .menu-items {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 18px;
-        width: fit-content;
-        padding: 8px 34px;
-        border-radius: 60px;
-        background-color: var(--primary);
-        box-shadow: var(--shadow);
-    }
+  .nav .menu-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    width: fit-content;
+    padding: 8px 34px;
+    border-radius: 60px;
+    background-color: var(--primary);
+    box-shadow: var(--shadow);
+  }
 
-    .nav .menu-item {
-        display: flex;
-        border-radius: 30px;
-        color: var(--white);
-        background: var(--primary);
-        transition: var(--transition-fast);
-        transition-property: background-color;
-        transition: border 0.3s;
-    }
+  .nav .menu-item {
+    display: flex;
+    border-radius: 30px;
+    color: var(--white);
+    background: var(--primary);
+    transition: var(--transition-fast);
+    transition-property: background-color;
+    transition: border 0.3s;
+  }
 
-    .nav .menu-item.active {
-        background: var(--white);
-        color: var(--primary);
-        font-family: "DM Sans", sans-serif;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.5;
-    }
+  .nav .menu-item.active {
+    background: var(--white);
+    color: var(--primary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+  }
 
-    .nav .menu-item-link {
-        width: auto;
-        height: 100%;
-        padding: 6px 12px;
-    }
+  .nav .menu-item-link {
+    width: auto;
+    height: 100%;
+    padding: 6px 12px;
+  }
 
-    /* .nav .menu-item {
+  /* .nav .menu-item {
         transition: border 0.3s;
     } */
 
-    .nav .menu-item:hover,
-    .nav .menu-item:focus {
-        border: 1px solid var(--white);
-    }
+  .nav .menu-item:hover,
+  .nav .menu-item:focus {
+    border: 1px solid var(--white);
+  }
 
-    .nav .socials {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 0;
-    }
+  .nav .socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+  }
 
-    .nav .social-item {
-        padding: 0;
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-        border: 1px solid var(--primary-disabled);
-        transition: var(--transition-fast);
-        transition-property: background-color;
-    }
+  .nav .social-item {
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid var(--primary-disabled);
+    transition: var(--transition-fast);
+    transition-property: background-color;
+  }
 
-    .nav .social-item a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        height: 44px;
-        width: 44px;
-    }
+  .nav .social-item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    height: 44px;
+    width: 44px;
+  }
 
-    .nav .social-item svg {
-        fill: var(--primary);
-        transition: var(--transition-fast);
-        transition-property: fill;
-    }
+  .nav .social-item svg {
+    fill: var(--primary);
+    transition: var(--transition-fast);
+    transition-property: fill;
+  }
 
-    .nav .social-item:hover {
-        background-color: var(--primary);
-    }
+  .nav .social-item:hover {
+    background-color: var(--primary);
+  }
 
-    .nav .social-item:hover svg {
-        fill: var(--white);
-    }
-=======
-  .header {
-    padding-top: 24px;
+  .nav .social-item:hover svg {
+    fill: var(--white);
   }
 
   .nav .menu-btn {
@@ -183,9 +178,7 @@
     gap: 12px;
     padding: 0;
   }
-  main
-
-  .nav .social-item {
+  main .nav .social-item {
     padding: 0;
     width: 44px;
     height: 44px;
