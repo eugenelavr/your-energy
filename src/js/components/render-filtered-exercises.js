@@ -1,4 +1,5 @@
 import iconsPath from '../../img/sprite.svg';
+import { handleOpenExerciseModal } from '../handlers/modals-handlers';
 
 
 
@@ -45,7 +46,6 @@ export const renderFilteredExercises = (
 
   exercises.forEach(ex => {
     const li = document.createElement('li');
-
     li.className = 'filtered-exercise-card';
     li.innerHTML = `
             <div class="exercise-header">
@@ -82,25 +82,7 @@ export const renderFilteredExercises = (
               <p>Target: <span class="meta-span">${ex.target}</span></p>
             </div>
           `;
-    list.appendChild(li);
+          li.addEventListener('click', () => handleOpenExerciseModal(ex._id));
+          list.appendChild(li);
   });
 };
-
-//   const item = e.target.closest('.filter-item');
-//   if (!item) return;
-//
-//   const name = item.querySelector('.filter-label')?.textContent;
-//   const category = document.querySelector('.active-category')?.textContent;
-//
-//   if (name && category) {
-//     const filters = {
-//       muscles: category === 'Muscles' ? name : '',
-//       bodypart: category === 'Body parts' ? name : '',
-//       equipment: category === 'Equipment' ? name : '',
-//     };
-//
-//     exercisesApi.getExercises({ filters }).then(res => {
-//       renderExerciseList(res.results);
-//     });
-//   }
-// });

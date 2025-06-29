@@ -1,31 +1,36 @@
+.hide {
+  display: none;
+}
+.exercises-container {
+  background: pink;
+}
+/* list styles */
 
+.filtered-exercises-cards-wrapper {
+  width: 100%;
 
-  .filtered-exercises-cards-wrapper {
-    width: 100%;
+  .filtered-exercises-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
+    gap: 20px;
+  }
 
-
-    .filtered-exercises-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
-      gap: 20px;
-    }
-  
-    .filtered-exercise-card {
+  .filtered-exercise-card {
     background-color: #fff;
-    border-radius: 14px;
+    border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.2s;
-  
+
     &:hover {
       transform: translateY(-5px);
     }
-      .exercise-header{
+    .exercise-header {
       display: flex;
-      justify-content:start;
+      justify-content: start;
       align-items: center;
       font-size: 12px;
       margin-bottom: 24px;
@@ -34,26 +39,24 @@
         font-size: 12px;
         margin-right: 24px;
         background: transparent;
-        border:1px solid var(--primary);
+        border: 1px solid var(--primary);
         border-radius: 16px;
-        padding: 5px 8px; ;
+        padding: 5px 8px;
         font-weight: 500;
         text-transform: uppercase;
       }
-  
+
       .rating {
-     
         font-weight: 400;
         line-height: 1.5;
         margin-right: 4px;
-        
       }
       .rating-icon {
         width: 16px;
         height: 16px;
         fill: var(--gold);
       }
-  
+
       .start-btn {
         width: 56px;
         justify-content: space-between;
@@ -65,157 +68,146 @@
         align-items: center;
         margin: 0 0 0 auto;
       }
-      
-  
-      }
-      .exercise-content{
+    }
+    .exercise-content {
       display: flex;
       align-items: center;
       gap: 16px;
-            margin-bottom:24px;
+      margin-bottom: 24px;
 
       .exercise-title {
-      font-size: 20px;
-      font-weight: 400;
-      text-transform: capitalize;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: capitalize;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
-      .exercise-icon{
-           height: 24px;
-            width: 24px;          
-            fill:currentColor;
-          }
+      .exercise-icon {
+        height: 24px;
+        width: 24px;
+        fill: currentColor;
       }
-       .exercise-meta {
+    }
+    .exercise-meta {
       display: flex;
       gap: 8px;
       align-items: center;
       flex-direction: row;
-  
+
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      p{
+      p {
         margin: 0;
-        padding: 0; 
+        padding: 0;
         color: rgba(36, 36, 36, 0.4);
         font-size: 12px;
         font-weight: 400;
         line-height: 1.5;
-
       }
       .meta-span {
         text-transform: capitalize;
         color: var(--primary);
-          width: 32px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-          opacity: 1;
-          
-        
+        width: 32px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        opacity: 1;
       }
     }
   }
-  
-    .filtered-exercise-card:hover {
-      transform: translateY(-4px);
-    }
-  
+
+  .filtered-exercise-card:hover {
+    transform: translateY(-4px);
   }
+}
+.filtered-pagination {
+  display: flex;
+  overflow-x: hidden;
+  justify-content: center;
+  margin-top: 20px;
 
-  @media screen and (min-width: 768px) {
-    .filtered-exercises-cards-wrapper .filtered-exercises-list {
-      grid-template-columns: repeat(auto-fill, minmax(344px, 1fr));
-      gap: 16px;
-      row-gap: 32px;
-    }
-  
-    .filtered-exercises-cards-wrapper .filtered-exercise-card {
-      padding: 16px 20px;
-    }
-    .filtered-exercises-cards-wrapper .filtered-exercise-card .exercise-content {
-      margin-bottom: 8px;
-
-    }
-
-    .filtered-exercises-cards-wrapper .filtered-exercise-card .exercise-content .exercise-title {
-      font-size: 24px;
-    }
-  
-    .filtered-pagination {
-      flex-wrap: wrap;
-    }
-  
-    .page-item {
-      margin: 4px;
-      width: 28px;
-      height: 28px;
-      font-size: 18px;
-    }
-  }
-
-  @media screen and (min-width:1440px) {
-    .filtered-exercises-cards-wrapper {
-      .filtered-exercises-list {
-        grid-template-columns: repeat(auto-fill, minmax(442px, 1fr));
-    }
-  
-    .filtered-exercise-card {
-      padding: 16px 20px;
-    }
-  
-    .filtered-pagination {
-      flex-wrap: nowrap;
-    }
-  
-    .page-item {
-      margin: 0 8px;
-      width: 32px;
-      height: 32px;
-      font-size: 24px;
-    }
-    
-  }
-
-  .filtered-pagination {
+  .page-item {
+    font-size: 24px;
     display: flex;
-    overflow-x: hidden;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
-  
-    .page-item {
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 32px;
-      width: 32px;
-      border: 1px solid var(--primary);
-      border-radius: 50%;
-  
-      margin: 0 8px;
-      cursor: pointer;
-      transition: var(--transition);
-  
-      &:hover {
-        background-color: var(--primary);
-        color: var(--white)
-      }
-    }
-    .page-item.active {
+    height: 32px;
+    width: 32px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+
+    margin: 0 8px;
+    cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
       background-color: var(--primary);
       color: var(--white);
     }
   }
-
-  .hide{
-
-    display: none;
+  .page-item.active {
+    background-color: var(--primary);
+    color: var(--white);
   }
-  .exercises-container{
-    background: pink;
+  .pagination-ellipsis {
+    padding: 6px 8px;
+    color: #999;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .filtered-exercises-cards-wrapper .filtered-exercises-list {
+    grid-template-columns: repeat(auto-fill, minmax(344px, 1fr));
+    gap: 16px;
+    row-gap: 32px;
+  }
+
+  .filtered-exercises-cards-wrapper .filtered-exercise-card {
+    padding: 16px 20px;
+  }
+  .filtered-exercises-cards-wrapper .filtered-exercise-card .exercise-content {
+    margin-bottom: 8px;
+  }
+
+  .filtered-exercises-cards-wrapper
+    .filtered-exercise-card
+    .exercise-content
+    .exercise-title {
+    font-size: 24px;
+  }
+
+  .filtered-pagination {
+    flex-wrap: wrap;
+  }
+
+  .page-item {
+    margin: 4px;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .filtered-exercises-cards-wrapper {
+    .filtered-exercises-list {
+      grid-template-columns: repeat(auto-fill, minmax(405px, 1fr));
+    }
+
+    .filtered-pagination {
+      flex-wrap: nowrap;
+    }
+
+    .page-item {
+      margin: 0 8px;
+      width: 32px;
+      height: 32px;
+      font-size: 24px;
+    }
+  }
+
+
+}
+
