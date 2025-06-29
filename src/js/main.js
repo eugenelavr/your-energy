@@ -10,7 +10,7 @@ import { subscribeFormListener } from './listeners/subscribeFormListener.js';
 import { handleExercises } from './components/exercises.js';
 import { handleQuoteOfDay } from './handlers/static-handlers.js';
 import { renderCategories } from './handlers/categories.js';
-import { initBurgerMenu } from './burger-menu.js';
+import { burgerMenu } from './burger-menu.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   handleQuoteOfDay();
   handleExercises();
   renderCategories();
-  initBurgerMenu();
+  burgerMenu();
 });
 
 document.addEventListener('keydown', event => {
