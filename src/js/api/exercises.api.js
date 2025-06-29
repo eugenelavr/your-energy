@@ -1,8 +1,9 @@
+import axios from 'axios';
 import client from './client.js';
 import { toaster } from '../utils/utils.js';
 
 export const exercisesApi = {
-  async fetchFitlers({ filter, page, limit = 10 }) {
+  async fetchFilters({ filter, page = 1, limit = 10 }) {
     try {
       const searchParams = new URLSearchParams();
       filter && searchParams.append('filter', filter);
@@ -13,6 +14,7 @@ export const exercisesApi = {
       return res.data;
     } catch (e) {
       console.error(e);
+      return { results: [], totalPages: 0, page: 1 };
     }
   },
   async fetchExercises({
@@ -34,7 +36,11 @@ export const exercisesApi = {
 
       const res = await client.get(url);
       return res.data;
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+
+      return { results: [], totalPages: 0, page: 1 };
+    }
   },
   async getExerciseById(id) {
     try {
@@ -42,6 +48,7 @@ export const exercisesApi = {
       return data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching exercise by ID: ${error}`);
+
       throw error;
     }
   },
@@ -74,11 +81,39 @@ export const exercisesApi = {
       if (page) queryParams.append('page', page);
       if (limit) queryParams.append('limit', limit);
 
-      const url = `${API_URL}/filters${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
+      const url = `/filters${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
       const { data } = await axios.get(url);
       return data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching filters: ${error}`);
+      throw error;
+    }
+  },
+  async getExercisesFilteredOrSearched(filters = {}, page = 1, limit = 12) {
+    try {
+      const { bodypart, muscles, equipment, keyword } = filters;
+      const queryParams = new URLSearchParams();
+
+      if (bodypart) queryParams.append('bodypart', bodypart);
+      if (muscles) queryParams.append('muscles', muscles);
+      if (equipment) queryParams.append('equipment', equipment);
+      if (keyword) queryParams.append('keyword', keyword);
+      queryParams.append('page', page);
+      queryParams.append('limit', limit);
+
+      const res = await client.get(`/exercises`, {
+        params: {
+          bodypart,
+          muscles,
+          equipment,
+          keyword,
+          page,
+          limit,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      toaster.showErrorToast(`Error fetching filtered exercises: ${error}`);
       throw error;
     }
   },

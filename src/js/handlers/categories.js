@@ -1,6 +1,9 @@
 import { exercisesApi } from '../api/exercises.api.js';
 import { toaster } from '../utils/utils.js';
-import { renderCategoryCards, renderPagination } from '../components/categories-component.js';
+import {
+  renderCategoryCards,
+  renderPagination,
+} from '../components/categories-component.js';
 
 let currentFilter = 'Muscles';
 let currentPage = 1;
@@ -37,14 +40,14 @@ async function loadCategories(filter = currentFilter, page = 1) {
     renderCategoryCards(response.results);
     renderPagination(currentPage, totalPages);
     updateActiveCategory(filter);
-
   } catch (error) {
     console.error('Error loading categories:', error);
     toaster.showErrorToast('Помилка завантаження категорій');
 
     const categoriesList = document.querySelector('.categories__list');
     if (categoriesList) {
-      categoriesList.innerHTML = '<div class="error">Помилка завантаження категорій</div>';
+      categoriesList.innerHTML =
+        '<div class="error">Помилка завантаження категорій</div>';
     }
   } finally {
     isLoading = false;
@@ -80,7 +83,7 @@ function handlePaginationClick(event) {
   const targetElement = document.querySelector('.categories');
   if (targetElement) {
     targetElement.scrollIntoView({
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 }
@@ -99,7 +102,6 @@ async function renderCategories() {
     initializeEventListeners();
 
     await loadCategories('Muscles', 1);
-
   } catch (error) {
     console.error('Error initializing categories:', error);
     toaster.showErrorToast('Помилка ініціалізації категорій');

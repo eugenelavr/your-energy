@@ -5,11 +5,25 @@ import {
   setupOpenExerciseModalLister,
   setupGiveRatingListener,
 } from './listeners/modals-listeners.js';
+import { subscribeFormListener } from './listeners/subscribeFormListener.js';
+
+import { handleExercises } from './components/exercises.js';
+import { handleQuoteOfDay } from './handlers/static-handlers.js';
+import { initBurgerMenu } from './burger-menu.js';
+import { handleFilterClick } from './handlers/exercises-filtered-handler.js';
+import { headerInit } from './listeners/header-listener.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
   setupOpenExerciseModalLister();
   setupGiveRatingListener();
+  subscribeFormListener();
+  handleQuoteOfDay();
+  handleExercises();
+  handleFilterClick();
+  // renderCategories();
+  initBurgerMenu();
+  headerInit();
 });
 
 document.addEventListener('keydown', event => {

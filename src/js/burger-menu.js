@@ -1,15 +1,33 @@
-const sidebar = document.querySelector('.sidebar');
-const closeBtn = document.querySelector('.close-btn');
+export function initBurgerMenu() {
+  const burgerBtn = document.querySelector('.menu-btn');
+  const sidebar = document.querySelector('.sidebar');
+  const closeBtn = document.querySelector('.close-btn');
+  const overlay = document.querySelector('.modal-overlay');
 
-document.addEventListener('click', event => {
-  const svgIcon = event.target.closest('svg');
-  if (!svgIcon) return;
-  const nodeUse = svgIcon.querySelector('use[href$="#burger-menu"]');
-  if (nodeUse) {
+  if (!burgerBtn) return;
+
+  const openMenu = () => {
     sidebar.classList.add('active');
-  }
-});
+    document.body.classList.add('no-scroll');
+    overlay.classList.add('is-open');
+  };
 
-closeBtn.addEventListener('click', () => {
-  sidebar.classList.remove('active');
-});
+  const closeMenu = () => {
+    sidebar.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+    overlay.classList.remove('is-open');
+  };
+
+  burgerBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+
+  document.addEventListener('click', event => {
+    const isClickInside =
+      sidebar.contains(event.target) || burgerBtn.contains(event.target);
+    if (!isClickInside) {
+      sidebar.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+      overlay.classList.remove('is-open');
+    }
+  });
+}

@@ -33,7 +33,7 @@ const renderCategories = activeCategory => {
 };
 
 const renderFilters = async (category, page) => {
-  const filtersResponse = await exercisesApi.fetchFitlers({
+  const filtersResponse = await exercisesApi.fetchFilters({
     filter: category,
     page,
     limit: 12,
