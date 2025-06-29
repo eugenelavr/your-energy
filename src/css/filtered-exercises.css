@@ -203,16 +203,7 @@
     font-size: 24px;
   }
 
-  .filtered-pagination {
-    flex-wrap: wrap;
-  }
 
-  .page-item {
-    margin: 4px;
-    width: 28px;
-    height: 28px;
-    font-size: 18px;
-  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -221,15 +212,6 @@
       grid-template-columns: repeat(auto-fill, minmax(405px, 1fr));
     }
 
-    .filtered-pagination {
-      flex-wrap: nowrap;
-    }
-
-    .page-item {
-      margin: 0 8px;
-      width: 32px;
-      height: 32px;
-      font-size: 24px;
-    }
+ 
   }
 }
