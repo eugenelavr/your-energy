@@ -1,8 +1,26 @@
 .hide {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease;
+  position: absolute;
+
 }
 
-/* list styles */
+.hide-show-transition {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.hide-show-transition.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+
+}
+
+/* List styles */
 
 .filtered-exercises-cards-wrapper {
   width: 100%;
@@ -120,38 +138,52 @@
     transform: translateY(-4px);
   }
 }
+
+/* Pagination styles */
 .filtered-pagination {
   display: flex;
-  overflow-x: hidden;
   justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
   margin-top: 20px;
 
   .page-item {
-    font-size: 24px;
+    color: var(--text-secondary);
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 32px;
     width: 32px;
-    border: 1px solid var(--primary);
     border-radius: 50%;
-
-    margin: 0 8px;
+    border: 1px solid transparent;
+    margin: 0 2px;
     cursor: pointer;
     transition: var(--transition);
 
-    &:hover {
-      background-color: var(--primary);
-      color: var(--white);
+    &:hover:not(:disabled) {
+      border: 1px solid var(--primary);
+    }
+
+    &.active {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
     }
   }
-  .page-item.active {
-    background-color: var(--primary);
-    color: var(--white);
-  }
+
   .pagination-ellipsis {
-    padding: 6px 8px;
+    padding: 0 2px;
+    font-size: 20px;
     color: #999;
+    user-select: none;
   }
 }
 

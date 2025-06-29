@@ -97,6 +97,9 @@ export const handleExercises = () => {
 
   categoriesEl.addEventListener('click', e => {
     e.preventDefault();
+    document
+      .querySelector('.filtered-exercises-cards-wrapper')
+      .classList.add('hide');
 
     const targetEl = e.target;
 
@@ -107,6 +110,8 @@ export const handleExercises = () => {
 
       targetEl.parentElement.classList.add('active-category');
       renderFilters(selectedCategory, 1);
+      document.querySelector('.exercises-content').classList.remove('hide');
+
     }
   });
 };

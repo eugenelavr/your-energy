@@ -1,17 +1,26 @@
 <section class="exercises container">
   <div class="exercises-header">
-    <h2 class="exercises-title">Exercises</h2>
+
+    <div class="exercises-breadcrumbs">
+      <button class="breadcrumb-home">
+        <h2 class="exercises-title">Exercises</h2>
+      </button>
+      <span class="breadcrumb-divider">/</span>
+      <span class="breadcrumb-current"></span>
+    </div>
+
     <ul class="exercises-categories"></ul>
   </div>
 
   <div class="exercises-container">
     <load src="partials/quote.html" />
-    <div class="exercises-content">
+    
+    <div class="exercises-content hide-show-transition">
       <div class="exercises-list"></div>
       <ul class="exercises-pagination"></ul>
     </div>
     <!-- Filtered Exercises dont remove its hidden unless clicked -->
-    <div class="filtered-exercises-cards-wrapper hide">
+    <div class="filtered-exercises-cards-wrapper hide-show-transition hide">
       <ul class="filtered-exercises-list"></ul>
       <div class="filtered-pagination"></div>
     </div>
