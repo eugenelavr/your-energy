@@ -2,9 +2,7 @@ import { subscribeEmail } from '../api/subscribeApi';
 import iziToast from 'izitoast';
 import { emailPatern } from '../const/patterns';
 
-
 export function onSubscribeForm(e) {
-
   e.preventDefault();
 
   const form = e.currentTarget;
@@ -12,7 +10,6 @@ export function onSubscribeForm(e) {
   const email = input.value.trim();
 
   if (!emailPatern.test(email)) {
-
     iziToast.error({
       title: 'Error',
       message: 'Please enter a valid email.',
@@ -23,14 +20,13 @@ export function onSubscribeForm(e) {
   }
 
   subscribeEmail(email)
-    
     .then(() => {
       iziToast.success({
         title: 'Success',
         message: 'Subscription successful!',
         position: 'topRight',
       });
-      
+
       form.reset();
     })
 
