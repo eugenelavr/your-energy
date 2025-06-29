@@ -15,7 +15,7 @@ const headerInit = () => {
   }
 
   navItems.forEach((nav, index) => {
-    const navLink = nav.querySelector('.menu-item-link'); 
+    const navLink = nav.querySelector('.menu-item-link');
 
     navLink?.addEventListener('click', () => {
       navItems.forEach(navItem => navItem.classList.remove('active'));

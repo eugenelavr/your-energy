@@ -11,8 +11,7 @@ import { handleExercises } from './components/exercises.js';
 import { handleQuoteOfDay } from './handlers/static-handlers.js';
 import { initBurgerMenu } from './burger-menu.js';
 import { handleFilterClick } from './handlers/exercises-filtered-handler.js';
-import  { headerInit } from './listeners/header-listener.js'
-
+import { headerInit } from './listeners/header-listener.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   handleFilterClick();
   // renderCategories();
   initBurgerMenu();
-  headerInit()
+  headerInit();
 });
 
 document.addEventListener('keydown', event => {
