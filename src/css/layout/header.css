@@ -57,6 +57,7 @@
         background: var(--primary);
         transition: var(--transition-fast);
         transition-property: background-color;
+        transition: border 0.3s;
     }
 
     .nav .menu-item.active {
@@ -69,10 +70,19 @@
         line-height: 1.5;
     }
 
-    .nav .menu-item a {
+    .nav .menu-item-link {
         width: auto;
         height: 100%;
         padding: 6px 12px;
+    }
+
+    /* .nav .menu-item {
+        transition: border 0.3s;
+    } */
+
+    .nav .menu-item:hover,
+    .nav .menu-item:focus {
+        border: 1px solid var(--white);
     }
 
     .nav .socials {
