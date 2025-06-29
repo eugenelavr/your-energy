@@ -1,9 +1,9 @@
-export function initBurgerMenu() {
+export const burgerMenu = () => {
+  if (!burgerBtn || !sidebar || !closeBtn) return;
+
   const burgerBtn = document.querySelector('.menu-btn');
   const sidebar = document.querySelector('.sidebar');
   const closeBtn = document.querySelector('.close-btn');
-
-  if (!burgerBtn) return;
 
   burgerBtn.addEventListener('click', () => {
     sidebar.classList.add('active');
@@ -12,4 +12,4 @@ export function initBurgerMenu() {
   closeBtn.addEventListener('click', () => {
     sidebar.classList.remove('active');
   });
-}
+};

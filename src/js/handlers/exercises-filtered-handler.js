@@ -1,45 +1,47 @@
-
-import { exercisesApi } from "../api";
-import { renderFilteredExercises } from "../components/render-filtered-exercises";
+import { exercisesApi } from '../api';
+import { renderFilteredExercises } from '../components/render-filtered-exercises';
 
 export const handleFilterClick = (category, filterName, page, limit = 10) => {
-    const filters = {
-        muscles: category === 'Muscles' ? filterName : '',
-        bodypart: category === 'Body parts' ? filterName : '',
-        equipment: category === 'Equipment' ? filterName : '',
-      };
+  const filters = {
+    muscles: category === 'Muscles' ? filterName : '',
+    bodypart: category === 'Body parts' ? filterName : '',
+    equipment: category === 'Equipment' ? filterName : '',
+  };
 
-return async()=>{
-  try {
-    const res = await exercisesApi.getExercisesFilteredOrSearched({ filters, page, limit });
-    document
-      .querySelector('.filtered-exercises-cards-wrapper')
-      ?.classList.remove('hide');
-    document.querySelector('.exercises-content')?.classList.add('hide');
+  const toHide = document.querySelector('.exercises-content');
+  const toShow = document.querySelector('.filtered-exercises-cards-wrapper');
 
-    if (!res || !res.results || res.results.length === 0) {
-      console.error('No exercises found for the selected filters.');
-      return;
-    }
-    const exercises = res.results;
-    renderFilteredExercises(
-      exercises,
-      'filtered-exercises-cards-wrapper',
-      'exercises-content'
-    );
-    renderFilteredExercisesPagination(
-      res.totalPages,
+  return async () => {
+    try {
+      const res = await exercisesApi.getExercisesFilteredOrSearched({
+        filters,
+        page,
+        limit,
+      });
+      if (!res || !res.results || res.results.length === 0) {
+        console.error('No exercises found for the selected filters.');
+        return;
+      }
+
+      toShow?.classList.remove('hide');
+      toHide?.classList.add('hide');
+
+      const exercises = res.results;
+      console.log('Filtered exercises:', exercises, { filters, page, limit });
+
+      renderFilteredExercises(exercises);
+
+      renderFilteredExercisesPagination(
+        res.totalPages,
         page,
         category,
         filterName
-    );
-  } catch (error) {
-    console.error('Error fetching filtered exercises:', error);
-}
-}};;
-
-
-
+      );
+    } catch (error) {
+      console.error('Error fetching filtered exercises:', error);
+    }
+  };
+};
 
 function renderFilteredExercisesPagination(
   totalPages,
@@ -63,12 +65,19 @@ function renderFilteredExercisesPagination(
     const btn = document.createElement('button');
     btn.className = `page-item ${page === currentPage ? 'active' : ''}`;
     btn.textContent = page;
-   btn.addEventListener('click', async e => {
-     const page = parseInt(e.currentTarget.textContent, 10);
-     if (isNaN(page)) return;
-     const run = handleFilterClick(category, filterName, page);
-     await run();
-   });
+    btn.setAttribute('data-page', page);
+    btn.setAttribute('data-category', category);
+    btn.setAttribute('data-filter-name', filterName);
+    btn.addEventListener('click', async e => {
+      const page = Number(e.target.getAttribute('data-page'));
+      const category = e.target.getAttribute('data-category');
+      const filterName = e.target.getAttribute('data-filter-name');
+
+      if (isNaN(page) || !category || !filterName) return;
+
+      const run = handleFilterClick(category, filterName, page);
+      await run();
+    });
     return btn;
   };
   if (currentPage > maxVisible) {
@@ -95,8 +104,6 @@ function createEllipsis() {
   return span;
 }
 
-
-
 document
   .querySelector('.exercises-list')
   ?.addEventListener('click', async e => {
@@ -105,24 +112,19 @@ document
 
     const name = item.querySelector('.filter-label')?.textContent;
     const category = document.querySelector('.active-category')?.textContent;
+    const page = 1;
 
     if (name && category) {
-      const run = handleFilterClick(category, name, 1);
+      const run = handleFilterClick(category, name, page);
       await run();
     }
   });
 
-
-//   document
-//   .querySelector('.search-form')
-//   ?.addEventListener('submit', async e => {
-//     e.preventDefault();
 //     const searchInput = e.target.querySelector('.search-input');
 //     const query = searchInput.value.trim();
-// 
+//
 //     if (query) {
 //       const run = handleFilterClick('Search', query);
 //       await run(); // ✅ CALL the returned async function
 //     }
 //   });
-

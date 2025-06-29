@@ -1,9 +1,7 @@
 .hide {
   display: none;
 }
-.exercises-container {
-  background: pink;
-}
+
 /* list styles */
 
 .filtered-exercises-cards-wrapper {
@@ -207,7 +205,4 @@
       font-size: 24px;
     }
   }
-
-
 }
-

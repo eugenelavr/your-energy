@@ -3,7 +3,7 @@ import client from './client.js';
 import { toaster } from '../utils/utils.js';
 
 export const exercisesApi = {
-  async fetchFilters({ filter, page=1, limit = 10 }) {
+  async fetchFilters({ filter, page = 1, limit = 10 }) {
     try {
       const searchParams = new URLSearchParams();
       filter && searchParams.append('filter', filter);
@@ -38,7 +38,7 @@ export const exercisesApi = {
       return res.data;
     } catch (e) {
       console.error(e);
-  
+
       return { results: [], totalPages: 0, page: 1 };
     }
   },
@@ -48,7 +48,7 @@ export const exercisesApi = {
       return data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching exercise by ID: ${error}`);
-      
+
       throw error;
     }
   },
@@ -108,13 +108,13 @@ export const exercisesApi = {
           equipment,
           keyword,
           page,
-          limit
-        }
+          limit,
+        },
       });
       return res.data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching filtered exercises: ${error}`);
       throw error;
     }
-  }
+  },
 };

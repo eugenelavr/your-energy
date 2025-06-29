@@ -1,8 +1,6 @@
 import iconsPath from '../../img/sprite.svg';
 import { handleOpenExerciseModal } from '../handlers/modals-handlers';
 
-
-
 const iconsConfig = {
   runningStickFigure: {
     svgClass: 'exercise-icon',
@@ -21,30 +19,16 @@ const iconsConfig = {
   },
 };
 
+export const renderFilteredExercises = exercises => {
+  const list = document.querySelector(`.filtered-exercises-list`);
+  if (!list) {
+    console.error('List element not found');
+    return;
+  }
 
-export const renderFilteredExercises = (
-  exercises,
-  classToShow,
-  classToHide
-) => {
-  // @param {Array} exercises - Array of exercise objects to render
-  // @param {string} classToShow - Class to show the filtered exercises (e.g., 'filtered-exercises-cards-wrapper')
-  // @param {string} classToHide - Class to hide the original exercises content (e.g., 'exercises-content')
-
-  const contentToShow = document.querySelector(`.${classToShow}`);
-  const contentToHide = document.querySelector(`.${classToHide}`);
-
-  console.log(contentToHide, contentToShow);
-
-  contentToHide.classList.add('hide');
-  contentToShow.classList.remove('hide');
-
-  const list = document.querySelector(
-    `.${classToShow} .filtered-exercises-list`
-  );
   list.innerHTML = '';
 
-  exercises.forEach(ex => {
+  const newlist = exercises.forEach(ex => {
     const li = document.createElement('li');
     li.className = 'filtered-exercise-card';
     li.innerHTML = `
@@ -56,11 +40,8 @@ export const renderFilteredExercises = (
     <use href="${iconsConfig.star.path}"></use>
   </svg>
 </span>
-           
-              <button class="start-btn">Start
+  <button class="start-btn">Start
               <span class='start-exercise-icon'>
-              
-              
               <svg class="${iconsConfig.arrow.svgClass}" fill="${iconsConfig.arrow.fill}" width="16" height="16">
               <use href="${iconsConfig.arrow.path}"></use>
               </svg></span>
@@ -82,7 +63,7 @@ export const renderFilteredExercises = (
               <p>Target: <span class="meta-span">${ex.target}</span></p>
             </div>
           `;
-          li.addEventListener('click', () => handleOpenExerciseModal(ex._id));
-          list.appendChild(li);
+    li.addEventListener('click', () => handleOpenExerciseModal(ex._id));
+    list.appendChild(li);
   });
 };
