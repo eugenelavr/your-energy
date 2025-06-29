@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 gsap.registerPlugin(Observer);
 
-document.addEventListener('DOMContentLoaded', () => {
+const headerInit = () => {
   const navItems = document.querySelectorAll('.menu-item');
   let activeNavItemIndex = Number(sessionStorage.getItem('activeNavItemIndex'));
 
@@ -23,4 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
       sessionStorage.setItem('activeNavItemIndex', index);
     });
   });
-});
+};
+
+export { headerInit };
