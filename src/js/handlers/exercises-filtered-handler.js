@@ -162,19 +162,6 @@ document
     }
   });
 
-// document
-//   .querySelector('.exercises-categories')
-//   ?.addEventListener('click', e => {
-//     
-//     // hideShow(
-//     //   document.querySelector('.filtered-exercises-cards-wrapper'),
-//     //   document.querySelector('.exercises-content')
-//     // );
-//     breadcrumbState.currentFilter = null;
-//     updateBreadcrumbUI();
-// 
-//   });
-
 
   document
     .querySelector('.breadcrumb-home')
@@ -188,11 +175,3 @@ document
       updateBreadcrumbUI();
     });
 
-//     const searchInput = e.target.querySelector('.search-input');
-//     const query = searchInput.value.trim();
-//
-//     if (query) {
-//       const run = handleFilterClick('Search', query);
-//       await run(); // ✅ CALL the returned async function
-//     }
-//   });

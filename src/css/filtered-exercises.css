@@ -1,9 +1,4 @@
-/* .hide {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease;
-  position: absolute;
 
-} */
 
 .hide-show-transition {
   opacity: 1;

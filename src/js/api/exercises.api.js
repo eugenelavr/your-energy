@@ -107,12 +107,6 @@ export const exercisesApi = {
         params: Object.fromEntries(queryParams.entries()),
       });
 
-      console.log('getExercisesFilteredOrSearched called with:', {
-        filters,
-        page,
-        limit,
-      });
-      console.log('Filtered exercises response:', res.data);
       return res.data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching filtered exercises: ${error}`);
