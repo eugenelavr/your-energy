@@ -124,9 +124,6 @@
   .nav .social-item:hover svg {
     fill: var(--white);
   }
-  ======= .header {
-    padding-top: 24px;
-  }
 
   .nav .menu-btn {
     display: none;
