@@ -89,28 +89,24 @@ export const exercisesApi = {
       throw error;
     }
   },
-  async getExercisesFilteredOrSearched(filters = {}, page = 1, limit = 12) {
+  async getExercisesFilteredOrSearched(params = {}) {
     try {
+      const { filters = {}, page, limit } = params;
       const { bodypart, muscles, equipment, keyword } = filters;
+
       const queryParams = new URLSearchParams();
 
       if (bodypart) queryParams.append('bodypart', bodypart);
       if (muscles) queryParams.append('muscles', muscles);
       if (equipment) queryParams.append('equipment', equipment);
       if (keyword) queryParams.append('keyword', keyword);
-      queryParams.append('page', page);
-      queryParams.append('limit', limit);
+      if (page !== undefined) queryParams.append('page', String(page));
+      if (limit !== undefined) queryParams.append('limit', String(limit));
 
       const res = await client.get(`/exercises`, {
-        params: {
-          bodypart,
-          muscles,
-          equipment,
-          keyword,
-          page,
-          limit,
-        },
+        params: Object.fromEntries(queryParams.entries()),
       });
+
       return res.data;
     } catch (error) {
       toaster.showErrorToast(`Error fetching filtered exercises: ${error}`);
