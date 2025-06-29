@@ -1,3 +1,4 @@
+import axios from 'axios';
 import client from './client.js';
 import { toaster } from '../utils/utils.js';
 
@@ -74,7 +75,7 @@ export const exercisesApi = {
       if (page) queryParams.append('page', page);
       if (limit) queryParams.append('limit', limit);
 
-      const url = `${API_URL}/filters${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
+      const url = `/filters${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
       const { data } = await axios.get(url);
       return data;
     } catch (error) {
