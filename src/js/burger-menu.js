@@ -12,4 +12,11 @@ export function initBurgerMenu() {
   closeBtn.addEventListener('click', () => {
     sidebar.classList.remove('active');
   });
+  document.addEventListener('click', event => {
+    const isClickInside =
+      sidebar.contains(event.target) || burgerBtn.contains(event.target);
+    if (!isClickInside) {
+      sidebar.classList.remove('active');
+    }
+  });
 }

@@ -16,6 +16,7 @@
 
 .sidebar.active {
   transform: translateX(0);
+  transition: var(--transition-fast);
 }
 
 .close-btn {
