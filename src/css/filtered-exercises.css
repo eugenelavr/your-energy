@@ -25,7 +25,6 @@
     }
       .exercise-header{
       display: flex;
-      gap:24px;
       justify-content:start;
       align-items: center;
       font-size: 12px;
@@ -33,35 +32,51 @@
       text-transform: capitalize;
       .badge {
         font-size: 12px;
+        margin-right: 24px;
         background: transparent;
         border:1px solid var(--primary);
         border-radius: 16px;
-        padding: 2px 8px;
+        padding: 5px 8px; ;
         font-weight: 500;
         text-transform: uppercase;
       }
   
       .rating {
-        color: #f7b500;
+     
         font-weight: 400;
+        line-height: 1.5;
+        margin-right: 4px;
+        
+      }
+      .rating-icon {
+        width: 16px;
+        height: 16px;
+        fill: var(--gold);
       }
   
       .start-btn {
+        width: 56px;
+        justify-content: space-between;
         background: transparent;
         border: none;
         font-weight: 400;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         margin: 0 0 0 auto;
       }
+      
   
       }
       .exercise-content{
       display: flex;
+      align-items: center;
+      gap: 16px;
+            margin-bottom:24px;
+
       .exercise-title {
       font-size: 20px;
       font-weight: 400;
-      margin-bottom:24px;
       text-transform: capitalize;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -69,10 +84,7 @@
       }
       .exercise-icon{
            height: 24px;
-            width: 24px;
-            margin-right: 16px;
-            vertical-align: middle;
-            display: inline-block;
+            width: 24px;          
             fill:currentColor;
           }
       }
@@ -95,12 +107,14 @@
 
       }
       .meta-span {
+        text-transform: capitalize;
         color: var(--primary);
-          max-width: 32px;
+          width: 32px;
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
           opacity: 1;
+          
         
       }
     }
