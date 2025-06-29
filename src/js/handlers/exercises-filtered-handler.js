@@ -12,6 +12,11 @@ export const handleFilterClick = (category, filterName, page, limit = 10) => {
 return async()=>{
   try {
     const res = await exercisesApi.getExercisesFilteredOrSearched({ filters, page, limit });
+    document
+      .querySelector('.filtered-exercises-cards-wrapper')
+      ?.classList.remove('hide');
+    document.querySelector('.exercises-content')?.classList.add('hide');
+
     if (!res || !res.results || res.results.length === 0) {
       console.error('No exercises found for the selected filters.');
       return;
@@ -24,7 +29,7 @@ return async()=>{
     );
     renderFilteredExercisesPagination(
       res.totalPages,
-        res.currentPage,
+        page,
         category,
         filterName
     );
@@ -46,6 +51,9 @@ function renderFilteredExercisesPagination(
   if (!paginationContainer) return;
 
   paginationContainer.innerHTML = '';
+  paginationContainer.style.display = totalPages > 1 ? 'flex' : 'none';
+
+  console.log('pagination:', { totalPages, currentPage });
   const maxVisible = 5;
   if (totalPages <= 1) {
     paginationContainer.style.display = 'none';
@@ -55,11 +63,12 @@ function renderFilteredExercisesPagination(
     const btn = document.createElement('button');
     btn.className = `page-item ${page === currentPage ? 'active' : ''}`;
     btn.textContent = page;
-    btn.addEventListener('click', async () => {
-      const run = handleFilterClick(category, filterName, page);
-      await run();
-      paginationContainer.scrollIntoView({ behavior: 'smooth' }); // 👈 smooth scroll
-    });
+   btn.addEventListener('click', async e => {
+     const page = parseInt(e.currentTarget.textContent, 10);
+     if (isNaN(page)) return;
+     const run = handleFilterClick(category, filterName, page);
+     await run();
+   });
     return btn;
   };
   if (currentPage > maxVisible) {
