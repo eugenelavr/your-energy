@@ -97,9 +97,16 @@ export const handleExercises = () => {
 
   categoriesEl.addEventListener('click', e => {
     e.preventDefault();
+
+    // ***Hide the filtered exercises cards
     document
       .querySelector('.filtered-exercises-cards-wrapper')
       .classList.add('hide');
+      // ***Breadcrumbs
+      const breadcrumbsEl = document.querySelector('.breadcrumb-current');
+      const breadcrumbsDividerEl = document.querySelector('.breadcrumb-divider');
+      // 
+
 
     const targetEl = e.target;
 
@@ -110,6 +117,11 @@ export const handleExercises = () => {
 
       targetEl.parentElement.classList.add('active-category');
       renderFilters(selectedCategory, 1);
+
+      // ***breadcrumbs reset
+      breadcrumbsEl.textContent = '';
+      breadcrumbsDividerEl.style.display = 'none';
+      // ***Show this layout
       document.querySelector('.exercises-content').classList.remove('hide');
 
     }
