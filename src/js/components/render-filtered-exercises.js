@@ -28,7 +28,7 @@ export const renderFilteredExercises = exercises => {
 
   list.innerHTML = '';
 
-  const newlist = exercises.forEach(ex => {
+  exercises.forEach(ex => {
     const li = document.createElement('li');
     li.className = 'filtered-exercise-card';
     li.innerHTML = `
