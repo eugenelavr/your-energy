@@ -103,7 +103,7 @@ export const handleFilterClick = (category, filterName, page, limit) => {
       }
       hide(document.querySelector('.exercises-content'));
       show(document.querySelector('.filtered-exercises-cards-wrapper'));
-      show(document.querySelector('.search-wrapper'));
+      show(document.querySelector('.form-search'));
 
       breadcrumbState.currentFilter = filterName;
       breadcrumbState.currentCategory = category;
@@ -223,17 +223,21 @@ document
     ?.addEventListener('click', async () => {
  
       hide(document.querySelector('.filtered-exercises-cards-wrapper'));
-      hide(document.querySelector('.search-wrapper'));
+      hide(document.querySelector('.form-search'));
       show(document.querySelector('.exercises-content'));
       
       breadcrumbState.currentFilter = null;
       updateBreadcrumbUI();
     });
 
-document
-  .querySelector('.search-input')
-  ?.addEventListener('input', async (e) => {
-    const searchTerm = e.target.value;
-    console.log(`Search term updated: ${searchTerm}`);
-    handleSearchTerm(searchTerm );
-  });
+const searchInput = document.querySelector('.search-input');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', e => {
+        const searchTerm = e.target.value.trim();
+        console.log(`Search term updated: ${searchTerm}`);
+        handleSearchTerm(searchTerm);
+      });
+    } else {
+      console.error('Search input not found');
+    }

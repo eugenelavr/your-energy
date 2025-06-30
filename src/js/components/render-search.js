@@ -1,29 +1,34 @@
 
-
-
-
-
-
-
-
-export const renderSearchInput = (searchTerm) => {
-  const searchInput = document.querySelector('.search-input');
-  if (!searchInput) {
-    console.error('Search input element not found');
-    return;
-  }
-
-  searchInput.value = searchTerm.trim()
-  console.log(`Search input updated with term: ${searchTerm}`);
-    // Trigger the input event to notify any listeners of the change
-    const inputEvent = new Event('input', {
-        bubbles: true,
-        cancelable: true
-    });
-    searchInput.dispatchEvent(inputEvent);
-    console.log('Input event dispatched');
-    if (typeof handleSearchTerm === 'function') {
-      handleSearchTerm(searchTerm);
+const submitHandler = e => {
+    e.preventDefault();
+  
+    const form = e.currentTarget;
+    const searchInput = form.querySelector('.search-input');
+    const trimmed = searchInput?.value.trim();
+  
+    if (trimmed && typeof handleSearchTerm === 'function') {
+      handleSearchTerm(trimmed);
     }
-
-}
+  
+    form.reset();
+    searchInput.blur();
+    searchInput.value = '';
+  };
+  
+  export const renderSearchInput = (searchTerm) => {
+    const form = document.getElementById('search-form');
+    const searchInput = form?.querySelector('.search-input');
+  
+    if (!form || !searchInput) {
+      console.error('Search form or input not found');
+      return;
+    }
+  
+    searchInput.value = searchTerm.trim();
+    const inputEvent = new Event('input', { bubbles: true, cancelable: true });
+    searchInput.dispatchEvent(inputEvent);
+  
+    form.removeEventListener('submit', submitHandler);
+    form.addEventListener('submit', submitHandler);
+  };
+  
