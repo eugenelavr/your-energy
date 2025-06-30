@@ -155,10 +155,12 @@
     border: 1px solid transparent;
     margin: 0 2px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: color 0.3s ease-in-out;
+
 
     &:hover:not(:disabled) {
       border: 1px solid var(--primary);
+      color: var(--primary);
     }
 
     &.active {
