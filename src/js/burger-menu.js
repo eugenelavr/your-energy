@@ -9,7 +9,7 @@ export function initBurgerMenu() {
   const openMenu = () => {
     sidebar.classList.add('active');
     document.body.classList.add('sidebar-open');
-  }
+  };
 
   const closeMenu = () => {
     sidebar.classList.remove('active');

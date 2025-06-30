@@ -1,4 +1,3 @@
-import { doc } from 'prettier';
 import { exercisesApi } from '../api';
 import { renderFilteredExercises } from '../components/render-filtered-exercises';
 
@@ -98,9 +97,12 @@ export const handleFilterClick = (category, filterName, page, limit) => {
       if (!res || !res.results || res.results.length === 0) {
         console.error('No exercises found for the selected filters.');
 
-        const wrapper = document.querySelector('.filtered-exercises-cards-wrapper');
+        const wrapper = document.querySelector(
+          '.filtered-exercises-cards-wrapper'
+        );
         if (wrapper) {
-          wrapper.innerHTML = '<div class="no-exercises-message"><p>No exercises found for the selected filters.</p></div>';
+          wrapper.innerHTML =
+            '<div class="no-exercises-message"><p>No exercises found for the selected filters.</p></div>';
           show(wrapper);
         }
         return;
