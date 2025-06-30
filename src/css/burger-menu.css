@@ -1,78 +1,75 @@
 .sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 210px;
-    height: 812px;
-    background-color: #242424;
-    transform: translateX(100%);
-    transition: var(--transition);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 210px;
+  height: 100vh;
+  background-color: #242424;
+  transform: translateX(100%);
+  transition: var(--transition);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
 }
 
 .sidebar.active {
-    transform: translateX(0);
+  transform: translateX(0);
+  transition: var(--transition-fast);
 }
 
 .close-btn {
-    height: 32px;
-    background: none;
-    border: none;
-    color: #F4F4F4;
-    align-self: flex-end;
-    cursor: pointer;
-    padding: 0;
+  height: 32px;
+  background: none;
+  border: none;
+  color: #f4f4f4;
+  align-self: flex-end;
+  cursor: pointer;
+  padding: 0;
 }
 .menu {
-    margin-top: 228px;
-    margin-bottom: auto;
+  margin-top: 228px;
+  margin-bottom: auto;
 }
 
 .menu a {
-    display: block;
-    color: #F4F4F4;
-    text-decoration: none;
-    margin-bottom: 16px;
-    text-align: center;
-    font-family: var(--main-font-family);
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0px;
+  display: block;
+  color: #f4f4f4;
+  text-decoration: none;
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: var(--main-font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0px;
 }
 
 .soc-items.white {
-    display: flex;
-    gap: 12px;
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-    justify-content: center;
-    align-items: center; 
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .soc-item.white {
-    display: flex;
-    width: 44px;
-    height: 44px;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #F4F4F41A;
-    border-radius: 10px;
-
+  display: flex;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f4f4f41a;
+  border-radius: 10px;
 }
-
 
 .soc-icon.white {
   display: flex;
   width: 28px;
   height: 28px;
-  fill: #F4F4F4;
+  fill: #f4f4f4;
   justify-content: center;
   align-items: center;
 }

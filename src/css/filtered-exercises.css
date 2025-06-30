@@ -1,0 +1,217 @@
+
+
+.hide-show-transition {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease;
+  position: relative;}
+
+.hide-show-transition.hide {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease;
+  position: absolute;
+}
+
+/* List styles */
+
+.filtered-exercises-cards-wrapper {
+  width: 100%;
+
+  .filtered-exercises-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
+    gap: 20px;
+  }
+
+  .filtered-exercise-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+    .exercise-header {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      font-size: 12px;
+      margin-bottom: 24px;
+      text-transform: capitalize;
+      .badge {
+        font-size: 12px;
+        margin-right: 24px;
+        background: transparent;
+        border: 1px solid var(--primary);
+        border-radius: 16px;
+        padding: 5px 8px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .rating {
+        font-weight: 400;
+        line-height: 1.5;
+        margin-right: 4px;
+      }
+      .rating-icon {
+        width: 16px;
+        height: 16px;
+        fill: var(--gold);
+      }
+
+      .start-btn {
+        width: 56px;
+        justify-content: space-between;
+        background: transparent;
+        border: none;
+        font-weight: 400;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        margin: 0 0 0 auto;
+      }
+    }
+    .exercise-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+
+      .exercise-title {
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: capitalize;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .exercise-icon {
+        height: 24px;
+        width: 24px;
+        fill: currentColor;
+      }
+    }
+    .exercise-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-direction: row;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      p {
+        margin: 0;
+        padding: 0;
+        color: rgba(36, 36, 36, 0.4);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+      .meta-span {
+        text-transform: capitalize;
+        color: var(--primary);
+        width: 32px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        opacity: 1;
+      }
+    }
+  }
+
+  .filtered-exercise-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Pagination styles */
+.filtered-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  margin-top: 20px;
+
+  .page-item {
+    color: var(--text-secondary);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: var(--transition);
+
+    &:hover:not(:disabled) {
+      border: 1px solid var(--primary);
+    }
+
+    &.active {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .pagination-ellipsis {
+    padding: 0 2px;
+    font-size: 20px;
+    color: #999;
+    user-select: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .filtered-exercises-cards-wrapper .filtered-exercises-list {
+    grid-template-columns: repeat(auto-fill, minmax(344px, 1fr));
+    gap: 16px;
+    row-gap: 32px;
+  }
+
+  .filtered-exercises-cards-wrapper .filtered-exercise-card {
+    padding: 16px 20px;
+  }
+  .filtered-exercises-cards-wrapper .filtered-exercise-card .exercise-content {
+    margin-bottom: 8px;
+  }
+
+  .filtered-exercises-cards-wrapper
+    .filtered-exercise-card
+    .exercise-content
+    .exercise-title {
+    font-size: 24px;
+  }
+
+
+}
+
+@media screen and (min-width: 1440px) {
+  .filtered-exercises-cards-wrapper {
+    .filtered-exercises-list {
+      grid-template-columns: repeat(auto-fill, minmax(405px, 1fr));
+    }
+
+ 
+  }
+}

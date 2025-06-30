@@ -26,9 +26,9 @@ button {
   gap: 32px;
 }
 .favorites__body.center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .favorites__empty {
   color: var(--primary);
@@ -37,7 +37,6 @@ button {
   font-size: 18px;
   line-height: 1.33;
   max-width: 554px;
-  
 }
 
 .favorites__list {
@@ -45,7 +44,6 @@ button {
   grid-template-columns: repeat(2, 1fr);
   gap: 32px 16px;
   padding-right: 24px;
-  max-height: 487px;
 }
 .favorites__list::-webkit-scrollbar {
   width: 8px;
@@ -345,6 +343,6 @@ button {
     gap: 20px;
   }
   .favorites__empty {
-	font-size: 14px;
+    font-size: 14px;
   }
 }

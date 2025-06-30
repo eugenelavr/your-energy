@@ -8,10 +8,7 @@ const DEFAULT_CATEGORY = MUSCLES_CATEGORY;
 const CATEGORIES = [MUSCLES_CATEGORY, BODY_PARTS_CATEGORY, EQUIPMENT_CATEGORY];
 
 let selectedCategory = DEFAULT_CATEGORY;
-
-const categoriesEl = document.querySelector('.exercises-categories');
-const exercisesEl = document.querySelector('.exercises-list');
-const exercisesPaginationEl = document.querySelector('.exercises-pagination');
+let categoriesEl, exercisesEl, exercisesPaginationEl;
 
 const renderCategories = activeCategory => {
   const categoryElements = CATEGORIES.map(category => {
@@ -33,7 +30,7 @@ const renderCategories = activeCategory => {
 };
 
 const renderFilters = async (category, page) => {
-  const filtersResponse = await exercisesApi.fetchFitlers({
+  const filtersResponse = await exercisesApi.fetchFilters({
     filter: category,
     page,
     limit: 12,
@@ -82,6 +79,14 @@ const renderFilters = async (category, page) => {
 };
 
 export const handleExercises = () => {
+  // Initialize elements
+  categoriesEl = document.querySelector('.exercises-categories');
+  exercisesEl = document.querySelector('.exercises-list');
+  exercisesPaginationEl = document.querySelector('.exercises-pagination');
+
+  // Check if elements exist (they don't exist on favorites page)
+  if (!categoriesEl || !exercisesEl || !exercisesPaginationEl) return;
+
   renderCategories(selectedCategory);
   renderFilters(selectedCategory, 1);
 
@@ -98,6 +103,15 @@ export const handleExercises = () => {
   categoriesEl.addEventListener('click', e => {
     e.preventDefault();
 
+    // ***Hide the filtered exercises cards
+    document
+      .querySelector('.filtered-exercises-cards-wrapper')
+      .classList.add('hide');
+    // ***Breadcrumbs
+    const breadcrumbsEl = document.querySelector('.breadcrumb-current');
+    const breadcrumbsDividerEl = document.querySelector('.breadcrumb-divider');
+    //
+
     const targetEl = e.target;
 
     if (targetEl.nodeName === 'A') {
@@ -107,6 +121,12 @@ export const handleExercises = () => {
 
       targetEl.parentElement.classList.add('active-category');
       renderFilters(selectedCategory, 1);
+
+      // ***breadcrumbs reset
+      breadcrumbsEl.textContent = '';
+      breadcrumbsDividerEl.style.display = 'none';
+      // ***Show this layout
+      document.querySelector('.exercises-content').classList.remove('hide');
     }
   });
 };

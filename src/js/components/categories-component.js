@@ -2,7 +2,9 @@ export function renderCategoryCards(categories) {
   const categoriesList = document.querySelector('.categories__list');
   if (!categoriesList) return;
 
-  categoriesList.innerHTML = categories.map(category => `
+  categoriesList.innerHTML = categories
+    .map(
+      category => `
     <div class="category-card">
       <img src="${category.imgURL}" alt="${category.name}" class="category-card__img" />
       <div class="category-card__overlay">
@@ -10,7 +12,9 @@ export function renderCategoryCards(categories) {
         <p class="category-card__subtitle">${category.filter}</p>
       </div>
     </div>
-  `).join('');
+  `
+    )
+    .join('');
 }
 
 function generatePageNumbers(currentPage, totalPages) {
@@ -45,12 +49,14 @@ function generatePageNumbers(currentPage, totalPages) {
     }
   }
 
-  return pages.map(page => {
-    if (page === '...') {
-      return '<span class="pagination__dots">...</span>';
-    }
-    return `<button class="pagination__page ${page === currentPage ? 'active' : ''}" data-page="${page}">${page}</button>`;
-  }).join('');
+  return pages
+    .map(page => {
+      if (page === '...') {
+        return '<span class="pagination__dots">...</span>';
+      }
+      return `<button class="pagination__page ${page === currentPage ? 'active' : ''}" data-page="${page}">${page}</button>`;
+    })
+    .join('');
 }
 
 export function renderPagination(currentPage, totalPages) {
