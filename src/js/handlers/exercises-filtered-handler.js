@@ -82,11 +82,7 @@ async function renderFilteredExercisesPagination(
   }
   paginationContainer.style.display = 'flex';
 
-  const createBtn = (
-    page,
-    label = null,
-    disabled = false
-  ) => {
+  const createBtn = (page, label = null, disabled = false) => {
     const btn = document.createElement('button');
     btn.className = `page-item ${page === currentPage ? 'active' : ''}`;
     btn.textContent = label || page;
@@ -162,16 +158,13 @@ document
     }
   });
 
-
-  document
-    .querySelector('.breadcrumb-home')
-    ?.addEventListener('click', async () => {
- 
-      hideShow(
-        document.querySelector('.filtered-exercises-cards-wrapper'),
-        document.querySelector('.exercises-content')
-      );
-      breadcrumbState.currentFilter = null;
-      updateBreadcrumbUI();
-    });
-
+document
+  .querySelector('.breadcrumb-home')
+  ?.addEventListener('click', async () => {
+    hideShow(
+      document.querySelector('.filtered-exercises-cards-wrapper'),
+      document.querySelector('.exercises-content')
+    );
+    breadcrumbState.currentFilter = null;
+    updateBreadcrumbUI();
+  });
