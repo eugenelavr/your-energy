@@ -1,5 +1,6 @@
 import axios from 'axios';
 import client from './client.js';
+import { API_URL } from '../const/api-url.js';
 import { toaster } from '../utils/utils.js';
 
 export const exercisesApi = {
@@ -42,25 +43,7 @@ export const exercisesApi = {
       return { results: [], totalPages: 0, page: 1 };
     }
   },
-  async getExerciseById(id) {
-    try {
-      const { data } = await client.get(`/exercises/${id}`);
-      return data;
-    } catch (error) {
-      toaster.showErrorToast(`Error fetching exercise by ID: ${error}`);
 
-      throw error;
-    }
-  },
-
-  async updateRating(id, rating) {
-    try {
-      const { data } = await client.patch(`/exercises/${id}/rating`, rating);
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  },
 
   async quoteOfDay() {
     try {

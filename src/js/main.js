@@ -106,19 +106,33 @@ localStorage.setItem('favorites', JSON.stringify(favoriteIds));
 document.addEventListener('DOMContentLoaded', function () {
   const favoritesList = document.querySelector('.favorites__list');
   const emptyMessage = document.querySelector('.favorites__empty');
+
+  // Only run favorites code if we're on the favorites page
+  if (!favoritesList || !emptyMessage) return;
+
   const favBody = emptyMessage.closest('.favorites__body');
 
   const favorites = [];
 
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+
+    // Skip non-JSON values and system keys
+    if (!value || key === 'favorites' || !value.startsWith('{')) {
+      continue;
+    }
+
     try {
-      const item = JSON.parse(localStorage.getItem(key));
+      const item = JSON.parse(value);
       if (item && item.favorite === true) {
         favorites.push(item);
       }
     } catch (err) {
-      console.error(err.message);
+      console.error(
+        `Error parsing localStorage item with key "${key}":`,
+        err.message
+      );
     }
   }
 
@@ -159,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="card__body">
           <div class="card__exercise">
             <div class="card__exercise-logo">
-              <img src="img/favorites/quote.svg" alt="logo" />
+              <img src="./img/sprite.svg#commas" alt="logo" />
             </div>
             <p>${item.title}</p>
           </div>
