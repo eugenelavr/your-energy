@@ -2,17 +2,31 @@ import { doc } from 'prettier';
 import { exercisesApi } from '../api';
 import { renderFilteredExercises } from '../components/render-filtered-exercises';
 
-const hideShow = (toHide, toShow) => {
-  if (toHide) {
-    toHide.classList.add('hide');
-  }
-  if (toShow) {
-    toShow.classList.remove('hide');
-  }
-};
 const breadcrumbState = {
   currentFilter: null,
+  currentCategory: null,
 };
+
+
+// const hideShow = (toHide, toShow) => {
+//   if (toHide) {
+//     toHide.classList.add('hide');
+//   }
+//   if (toShow) {
+//     toShow.classList.remove('hide');
+//   }
+// };
+const hide=(el) => {
+  if (el) {
+    el.classList.add('hide');
+  }
+};
+const show=(el) => {
+  if (el) {
+    el.classList.remove('hide');
+  }
+};
+
 
 const updateBreadcrumbUI = () => {
   const current = document.querySelector('.breadcrumb-current');
@@ -28,6 +42,54 @@ const updateBreadcrumbUI = () => {
     divider.style.display = 'none';
   }
 };
+
+const debounce = (fn, delay = 300) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+};
+const handleSearchTerm = debounce(async (searchTerm, page = 1, limit = 10) => {
+  const keyword = searchTerm.trim();
+  if (!keyword) return;
+  const category=breadcrumbState.currentCategory || '';
+  const filter = breadcrumbState.currentFilter || '';
+  if (!filter && !keyword && !category) {
+    return;
+  }
+
+  console.log(`Searching for exercises with keyword: "${keyword}" in category: "${category}" and filter: "${filter}"`);
+
+  const filters = {
+    ...(category === 'Muscles' && { muscles: filter }),
+    ...(category === 'Body parts' && { bodypart: filter }),
+    ...(category === 'Equipment' && { equipment: filter }),
+  };
+
+  const hasFilter = filters.muscles || filters.bodypart || filters.equipment;
+
+  const params = {
+    filters: {
+      muscles: category === 'Muscles' ? filter : '' ,
+      bodypart: category === 'Body parts' ? filter : '',
+      equipment: category === 'Equipment' ? filter : '',
+    },
+    search: hasFilter ? keyword : '',
+    page,
+    limit,
+  };
+  const res = await exercisesApi.getExercisesFilteredOrSearched(params);
+  console.log(`Search results for "${keyword}":`, res);
+  renderFilteredExercises(res.results);
+  renderFilteredExercisesPagination(
+    res.totalPages,
+    res.page,
+    'Keyword',
+    keyword
+  );
+
+}, 500);
 
 export const handleFilterClick = (category, filterName, page, limit) => {
   const params = {
@@ -46,13 +108,13 @@ export const handleFilterClick = (category, filterName, page, limit) => {
         console.error('No exercises found for the selected filters.');
         return;
       }
-      hideShow(
-        document.querySelector('.exercises-content'),
-        document.querySelector('.filtered-exercises-cards-wrapper')
-      );
-      breadcrumbState.currentFilter = filterName;
-      const exercises = res.results;
+      hide(document.querySelector('.exercises-content'));
+      show(document.querySelector('.filtered-exercises-cards-wrapper'));
+      show(document.querySelector('.search-wrapper'));
 
+      breadcrumbState.currentFilter = filterName;
+      breadcrumbState.currentCategory = category;
+      const exercises = res.results;
       renderFilteredExercises(exercises);
       renderFilteredExercisesPagination(
         res.totalPages,
@@ -167,11 +229,18 @@ document
     .querySelector('.breadcrumb-home')
     ?.addEventListener('click', async () => {
  
-      hideShow(
-        document.querySelector('.filtered-exercises-cards-wrapper'),
-        document.querySelector('.exercises-content')
-      );
+      hide(document.querySelector('.filtered-exercises-cards-wrapper'));
+      hide(document.querySelector('.search-wrapper'));
+      show(document.querySelector('.exercises-content'));
+      
       breadcrumbState.currentFilter = null;
       updateBreadcrumbUI();
     });
 
+document
+  .querySelector('.search-input')
+  ?.addEventListener('input', async (e) => {
+    const searchTerm = e.target.value;
+    console.log(`Search term updated: ${searchTerm}`);
+    handleSearchTerm(searchTerm );
+  });

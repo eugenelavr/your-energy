@@ -91,26 +91,27 @@ export const exercisesApi = {
   },
   async getExercisesFilteredOrSearched(params = {}) {
     try {
-      const { filters = {}, page, limit } = params;
-      const { bodypart, muscles, equipment, keyword } = filters;
-
-      const queryParams = new URLSearchParams();
-
-      if (bodypart) queryParams.append('bodypart', bodypart);
-      if (muscles) queryParams.append('muscles', muscles);
-      if (equipment) queryParams.append('equipment', equipment);
-      if (keyword) queryParams.append('keyword', keyword);
-      if (page !== undefined) queryParams.append('page', String(page));
-      if (limit !== undefined) queryParams.append('limit', String(limit));
-
-      const res = await client.get(`/exercises`, {
-        params: Object.fromEntries(queryParams.entries()),
-      });
-
+      const { filters = {}, search, page, limit } = params;
+      const { bodypart, muscles, equipment } = filters;
+  
+      const hasFilter = bodypart || muscles || equipment;
+  
+      const query = {
+        ...(bodypart && { bodypart }),
+        ...(muscles && { muscles }),
+        ...(equipment && { equipment }),
+        ...(hasFilter && search && { keyword: search }),
+        ...(page !== undefined && { page }),
+        ...(limit !== undefined && { limit }),
+      };
+  
+      const res = await client.get('/exercises', { params: query });
+  
       return res.data;
     } catch (error) {
-      toaster.showErrorToast(`Error fetching filtered exercises: ${error}`);
+      console.error(`Error fetching filtered exercises: ${error}`);
+      toaster.showErrorToast(`Ooops, try again. Something went wrong!`);
       throw error;
     }
-  },
+  }
 };
