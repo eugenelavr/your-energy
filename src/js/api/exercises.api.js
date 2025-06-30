@@ -113,4 +113,27 @@ export const exercisesApi = {
       throw error;
     }
   },
+
+  async getExerciseById(id) {
+    try {
+      const { data } = await axios.get(`${API_URL}/exercises/${id}`);
+      return data;
+    } catch (error) {
+      toaster.showErrorToast(`Error fetching exercise by ID: ${error}`);
+      throw error;
+    }
+  },
+
+  async updateRating(id, rating) {
+    try {
+      const { data } = await axios.patch(
+        `${API_URL}/exercises/${id}/rating`,
+        rating
+      );
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
 };
