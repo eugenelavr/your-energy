@@ -20,14 +20,11 @@ export function initBurgerMenu() {
 
   burgerBtn.addEventListener('click', openMenu);
   closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
 
-  document.addEventListener('click', event => {
-    const isClickInside =
-      sidebar.contains(event.target) || burgerBtn.contains(event.target);
-    if (!isClickInside) {
-      sidebar.classList.remove('active');
-      document.body.classList.remove('no-scroll');
-      overlay.classList.remove('is-open');
-    }
+  sidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
   });
 }
