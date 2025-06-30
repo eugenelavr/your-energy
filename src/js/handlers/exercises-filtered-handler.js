@@ -8,14 +8,7 @@ const breadcrumbState = {
 };
 
 
-// const hideShow = (toHide, toShow) => {
-//   if (toHide) {
-//     toHide.classList.add('hide');
-//   }
-//   if (toShow) {
-//     toShow.classList.remove('hide');
-//   }
-// };
+
 const hide=(el) => {
   if (el) {
     el.classList.add('hide');
@@ -43,7 +36,7 @@ const updateBreadcrumbUI = () => {
   }
 };
 
-const debounce = (fn, delay = 300) => {
+const debounce = (fn, delay = 500) => {
   let timeoutId;
   return (...args) => {
     clearTimeout(timeoutId);
