@@ -7,19 +7,16 @@ const breadcrumbState = {
   currentCategory: null,
 };
 
-
-
-const hide=(el) => {
+const hide = el => {
   if (el) {
     el.classList.add('hide');
   }
 };
-const show=(el) => {
+const show = el => {
   if (el) {
     el.classList.remove('hide');
   }
 };
-
 
 const updateBreadcrumbUI = () => {
   const current = document.querySelector('.breadcrumb-current');
@@ -46,13 +43,15 @@ const debounce = (fn, delay = 500) => {
 const handleSearchTerm = debounce(async (searchTerm, page = 1, limit = 10) => {
   const keyword = searchTerm.trim();
   if (!keyword) return;
-  const category=breadcrumbState.currentCategory || '';
+  const category = breadcrumbState.currentCategory || '';
   const filter = breadcrumbState.currentFilter || '';
   if (!filter && !keyword && !category) {
     return;
   }
 
-  console.log(`Searching for exercises with keyword: "${keyword}" in category: "${category}" and filter: "${filter}"`);
+  console.log(
+    `Searching for exercises with keyword: "${keyword}" in category: "${category}" and filter: "${filter}"`
+  );
 
   const filters = {
     ...(category === 'Muscles' && { muscles: filter }),
@@ -64,7 +63,7 @@ const handleSearchTerm = debounce(async (searchTerm, page = 1, limit = 10) => {
 
   const params = {
     filters: {
-      muscles: category === 'Muscles' ? filter : '' ,
+      muscles: category === 'Muscles' ? filter : '',
       bodypart: category === 'Body parts' ? filter : '',
       equipment: category === 'Equipment' ? filter : '',
     },
@@ -81,7 +80,6 @@ const handleSearchTerm = debounce(async (searchTerm, page = 1, limit = 10) => {
     'Keyword',
     keyword
   );
-
 }, 500);
 
 export const handleFilterClick = (category, filterName, page, limit) => {
@@ -137,11 +135,7 @@ async function renderFilteredExercisesPagination(
   }
   paginationContainer.style.display = 'flex';
 
-  const createBtn = (
-    page,
-    label = null,
-    disabled = false
-  ) => {
+  const createBtn = (page, label = null, disabled = false) => {
     const btn = document.createElement('button');
     btn.className = `page-item ${page === currentPage ? 'active' : ''}`;
     btn.textContent = label || page;
@@ -217,27 +211,33 @@ document
     }
   });
 
+document
+  .querySelector('.breadcrumb-home')
+  ?.addEventListener('click', async () => {
+    hide(document.querySelector('.filtered-exercises-cards-wrapper'));
+    hide(document.querySelector('.form-search'));
+    show(document.querySelector('.exercises-content'));
 
-  document
-    .querySelector('.breadcrumb-home')
-    ?.addEventListener('click', async () => {
- 
-      hide(document.querySelector('.filtered-exercises-cards-wrapper'));
-      hide(document.querySelector('.form-search'));
-      show(document.querySelector('.exercises-content'));
-      
-      breadcrumbState.currentFilter = null;
-      updateBreadcrumbUI();
-    });
+    breadcrumbState.currentFilter = null;
+    updateBreadcrumbUI();
+  });
 
 const searchInput = document.querySelector('.search-input');
+const form = document.getElementById('search-form');
+if (searchInput && form) {
+  searchInput.addEventListener('input', e => {
+    const searchTerm = e.target.value.trim();
+    handleSearchTerm(searchTerm);
+  });
 
-    if (searchInput) {
-      searchInput.addEventListener('input', e => {
-        const searchTerm = e.target.value.trim();
-        console.log(`Search term updated: ${searchTerm}`);
-        handleSearchTerm(searchTerm);
-      });
-    } else {
-      console.error('Search input not found');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+      handleSearchTerm(searchTerm);
+      form.reset();
     }
+  });
+} else {
+  console.error('Search input or form not found');
+}

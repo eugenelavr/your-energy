@@ -129,6 +129,16 @@ html {
   pointer-events: none;
   transition: var(--transition);
 }
+.exercise-modal-descr {
+  max-height: 80px;
+  overflow-y: auto;
+  line-height: 1.3em;
+}
+.exercise-modal-descr p {
+  margin: 0;
+    font-size: 12px;
+    line-height: 1.5em;
+}
 
 .modal-overlay.is-open {
   opacity: 1;
@@ -148,6 +158,14 @@ html {
   .close-modal-btn {
     top: 16px;
     right: 16px;
+  }
+  .exercise-modal-descr{
+    max-height: 200px;
+      overflow-y: auto;
+    p{
+      font-size: 12px;
+      line-height: 1.5em;
+    }
   }
 }
 
