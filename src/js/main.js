@@ -96,55 +96,46 @@ const favoriteExercises = [
   },
 ];
 
+
 favoriteExercises.forEach(ex => {
   localStorage.setItem(ex.title, JSON.stringify(ex));
 });
+
 
 const favoriteIds = favoriteExercises.map(ex => ex._id);
 localStorage.setItem('favorites', JSON.stringify(favoriteIds));
 
 document.addEventListener('DOMContentLoaded', function () {
   const favoritesList = document.querySelector('.favorites__list');
-  const emptyMessage = document.querySelector('.favorites__empty');
-
-  // Only run favorites code if we're on the favorites page
-  if (!favoritesList || !emptyMessage) return;
-
-  const favBody = emptyMessage.closest('.favorites__body');
+  const emptyMessage = document.querySelector( '.favorites__empty' );
+  const favBody = emptyMessage.closest( '.favorites__body' );
+  
 
   const favorites = [];
 
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
-
-    // Skip non-JSON values and system keys
-    if (!value || key === 'favorites' || !value.startsWith('{')) {
-      continue;
-    }
-
     try {
-      const item = JSON.parse(value);
+      const item = JSON.parse(localStorage.getItem(key));
       if (item && item.favorite === true) {
         favorites.push(item);
       }
     } catch (err) {
-      console.error(
-        `Error parsing localStorage item with key "${key}":`,
-        err.message
-      );
+      console.error(err.message);
+      
     }
   }
 
   if (favorites.length === 0) {
     emptyMessage.classList.remove('is-hidden');
-    favoritesList.classList.add('is-hidden');
+    favoritesList.classList.add( 'is-hidden' );
     favBody.classList.remove('center');
     return;
   }
 
   emptyMessage.classList.add('is-hidden');
-  favoritesList.classList.remove('is-hidden');
+  favoritesList.classList.remove( 'is-hidden' );
+  
 
   favorites.forEach(item => {
     const li = document.createElement('li');
@@ -173,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="card__body">
           <div class="card__exercise">
             <div class="card__exercise-logo">
-              <img src="./img/sprite.svg#commas" alt="logo" />
+              <img src="img/favorites/quote.svg" alt="logo" />
             </div>
             <p>${item.title}</p>
           </div>
@@ -196,18 +187,20 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     favoritesList.appendChild(li);
     li.querySelector('.card__delete').addEventListener('click', function () {
+       
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
       const updatedFavorites = favorites.filter(favId => favId !== item._id);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-
+      
+ 
       localStorage.removeItem(item.title);
 
       li.remove();
 
       if (favoritesList.children.length === 0) {
         favoritesList.classList.add('is-hidden');
-        emptyMessage.classList.remove('is-hidden');
-        favBody.classList.add('center');
+        emptyMessage.classList.remove( 'is-hidden' );
+        favBody.classList.add('center')
       }
     });
   });
