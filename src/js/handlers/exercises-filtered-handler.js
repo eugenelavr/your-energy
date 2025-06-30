@@ -97,6 +97,12 @@ export const handleFilterClick = (category, filterName, page, limit) => {
       const res = await exercisesApi.getExercisesFilteredOrSearched(params);
       if (!res || !res.results || res.results.length === 0) {
         console.error('No exercises found for the selected filters.');
+
+        const wrapper = document.querySelector('.filtered-exercises-cards-wrapper');
+        if (wrapper) {
+          wrapper.innerHTML = '<div class="no-exercises-message"><p>No exercises found for the selected filters.</p></div>';
+          show(wrapper);
+        }
         return;
       }
       hide(document.querySelector('.exercises-content'));

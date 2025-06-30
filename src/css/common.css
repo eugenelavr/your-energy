@@ -5,8 +5,9 @@ body {
   background-color: var(--primary-light);
   line-height: 1.125;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
-
 
 html {
   overflow-x: hidden;
@@ -114,17 +115,16 @@ html {
   }
 }
 
-
 .exercise-modal-descr {
   max-height: 80px;
   overflow-y: auto;
   line-height: 1.3em;
 }
 .exercise-modal-descr p {
-    font-size: 12px;
-    line-height: 1.3em;
-    font-weight: 400;
-    text-overflow: clip;
+  font-size: 12px;
+  line-height: 1.3em;
+  font-weight: 400;
+  text-overflow: clip;
 }
 
 .close-modal-btn {
@@ -141,10 +141,10 @@ html {
     top: 16px;
     right: 16px;
   }
-  .exercise-modal-descr{
+  .exercise-modal-descr {
     max-height: 200px;
-      overflow-y: auto;
-    p{
+    overflow-y: auto;
+    p {
       font-size: 12px;
       line-height: 1.5em;
     }
@@ -179,8 +179,8 @@ html {
   transition: var(--transition);
 }
 
-
-body.modal-open, body.sidebar-open {
+body.modal-open,
+body.sidebar-open {
   position: fixed;
   top: 0;
   left: 0;
@@ -195,4 +195,3 @@ body.modal-open, body.sidebar-open {
   opacity: 1;
   pointer-events: auto;
 }
-

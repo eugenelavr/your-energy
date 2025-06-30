@@ -1,5 +1,5 @@
 .exercise-modal-card {
-margin: 20px auto;
+  margin: 20px auto;
   position: relative;
   display: flex;
   height: auto;
@@ -12,7 +12,6 @@ margin: 20px auto;
   background-color: rgba(var(--rgba-black));
   font-size: 12px;
   line-height: 1.3em;
-
 }
 .exercise-gif-wrapper {
   flex-shrink: 0;
@@ -33,7 +32,7 @@ margin: 20px auto;
     ),
     rgba(var(--rgba-light-gray)) -7.072px -25.893px / 107.482% 121.729%
       no-repeat;
-      background-blend-mode: overlay; 
+  background-blend-mode: overlay;
 }
 
 .exercise-gif-wrapper img {
@@ -42,7 +41,6 @@ margin: 20px auto;
   height: 100%;
   display: block;
   object-fit: cover;
-
 }
 
 @media screen and (min-width: 768px) {
@@ -53,7 +51,6 @@ margin: 20px auto;
   }
 }
 
-
 @media screen and (min-width: 768px) {
   .exercise-gif-wrapper {
     flex-shrink: 0;
@@ -62,7 +59,6 @@ margin: 20px auto;
     height: 260px;
   }
 }
-
 
 .exercise-modal-title {
   &::first-letter {

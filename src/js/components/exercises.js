@@ -102,11 +102,10 @@ export const handleExercises = () => {
     document
       .querySelector('.filtered-exercises-cards-wrapper')
       .classList.add('hide');
-      // ***Breadcrumbs
-      const breadcrumbsEl = document.querySelector('.breadcrumb-current');
-      const breadcrumbsDividerEl = document.querySelector('.breadcrumb-divider');
-      // 
-
+    // ***Breadcrumbs
+    const breadcrumbsEl = document.querySelector('.breadcrumb-current');
+    const breadcrumbsDividerEl = document.querySelector('.breadcrumb-divider');
+    //
 
     const targetEl = e.target;
 
@@ -123,7 +122,6 @@ export const handleExercises = () => {
       breadcrumbsDividerEl.style.display = 'none';
       // ***Show this layout
       document.querySelector('.exercises-content').classList.remove('hide');
-
     }
   });
 };

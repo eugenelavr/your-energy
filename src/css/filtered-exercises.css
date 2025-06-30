@@ -1,17 +1,20 @@
-
-
 .hide-show-transition {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease;
-  position: relative;}
+  transition:
+    opacity 0.5s ease-in-out,
+    visibility 0.5s ease;
+  position: relative;
+}
 
 .hide-show-transition.hide {
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease;
   position: absolute;
 }
 
@@ -157,7 +160,6 @@
     cursor: pointer;
     transition: color 0.3s ease-in-out;
 
-
     &:hover:not(:disabled) {
       border: 1px solid var(--primary);
       color: var(--primary);
@@ -204,8 +206,6 @@
     .exercise-title {
     font-size: 24px;
   }
-
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -213,7 +213,5 @@
     .filtered-exercises-list {
       grid-template-columns: repeat(auto-fill, minmax(405px, 1fr));
     }
-
- 
   }
 }

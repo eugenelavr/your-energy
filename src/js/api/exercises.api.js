@@ -93,9 +93,9 @@ export const exercisesApi = {
     try {
       const { filters = {}, search, page, limit } = params;
       const { bodypart, muscles, equipment } = filters;
-  
+
       const hasFilter = bodypart || muscles || equipment;
-  
+
       const query = {
         ...(bodypart && { bodypart }),
         ...(muscles && { muscles }),
@@ -104,14 +104,14 @@ export const exercisesApi = {
         ...(page !== undefined && { page }),
         ...(limit !== undefined && { limit }),
       };
-  
+
       const res = await client.get('/exercises', { params: query });
-  
+
       return res.data;
     } catch (error) {
       console.error(`Error fetching filtered exercises: ${error}`);
       toaster.showErrorToast(`Ooops, try again. Something went wrong!`);
       throw error;
     }
-  }
+  },
 };

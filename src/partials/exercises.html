@@ -1,6 +1,5 @@
 <section class="exercises container">
   <div class="exercises-header">
-
     <div class="exercises-breadcrumbs">
       <button class="breadcrumb-home">
         <h2 class="exercises-title">Exercises</h2>
@@ -9,21 +8,27 @@
       <span class="breadcrumb-current"></span>
     </div>
 
-<div class="filter-search-wrapper">
-    <form class="form-search hide-show-transition hide" id="search-form">
-      <label class="search-label" for="exercises-filter"></label>
-      <input type="text" class="search-input hide" id="exercises-filter" placeholder="Search exercises..." />
-      <button class="clear-search" type="button" aria-label="Clear search">×</button>
+    <div class="filter-search-wrapper">
+      <form class="form-search hide-show-transition hide" id="search-form">
+        <label class="search-label" for="exercises-filter"></label>
+        <input
+          type="text"
+          class="search-input hide"
+          id="exercises-filter"
+          placeholder="Search exercises..."
+        />
+        <button class="clear-search" type="button" aria-label="Clear search">
+          ×
+        </button>
+      </form>
 
-    </form>
-
-    <ul class="exercises-categories"></ul>
-  </div>
+      <ul class="exercises-categories"></ul>
+    </div>
   </div>
 
   <div class="exercises-container">
     <load src="partials/quote.html" />
-    
+
     <div class="exercises-content hide-show-transition">
       <div class="exercises-list"></div>
       <ul class="exercises-pagination"></ul>

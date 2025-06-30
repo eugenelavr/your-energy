@@ -19,7 +19,7 @@ const handleFavoriteAction = event => {
 
 const handleModalClose = modal => {
   modal.classList.remove(modalsClasses.IS_OPEN);
-  document.documentElement.classList.remove('modal-open'); 
+  document.documentElement.classList.remove('modal-open');
   document.body.classList.remove('modal-open');
 };
 
@@ -104,7 +104,6 @@ const initializeRatingBlockListener = () => {
 
 function setupOpenExerciseModalLister() {
   document.addEventListener('click', event => {
-
     if (event.target.closest(modalsClasses.OPEN_EXERCISE_MODAL)) {
       const id = event.target.closest(modalsClasses.EXERCISE_ITEM_FOR_DATA_ID)
         .dataset.id;
