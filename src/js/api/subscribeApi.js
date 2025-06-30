@@ -1,5 +1,5 @@
 export async function subscribeEmail(email) {
-  const response = await fetch('https://your-energy.b.goit.study/api/quote', {
+  const response = await fetch('https://your-energy.b.goit.study/api/subscription', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email }),
