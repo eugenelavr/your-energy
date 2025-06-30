@@ -10,7 +10,6 @@ const modalsClasses = {
   REMOVE_FROM_FAVORITES: '#remove-from-favorites',
   RATING_MODAL_FORM: 'rating-modal-form',
 
- 
   OPEN_EXERCISE_MODAL: '.card__start',
   EXERCISE_ITEM_FOR_DATA_ID: '.exercise-item',
 };
