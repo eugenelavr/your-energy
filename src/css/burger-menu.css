@@ -65,6 +65,11 @@
   border-radius: 10px;
 }
 
+.soc-item.white:focus {
+    background-color: rgba(244, 244, 244, 1);
+    transform: scale(1.1);
+} 
+
 .soc-icon.white {
   display: flex;
   width: 28px;

@@ -110,10 +110,10 @@
 .exercises-container {
   gap: 32px;
   display: flex;
+  overflow: hidden;
 }
 
 .exercises-info {
-  width: 100%;
   gap: 32px;
   display: flex;
   flex-direction: column;
@@ -347,6 +347,7 @@
 .text-info {
   overflow: hidden;
   display: -webkit-box;
+  line-clamp: 5;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   font-size: 14px;
