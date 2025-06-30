@@ -2,7 +2,7 @@ export function initBurgerMenu() {
   const burgerBtn = document.querySelector('.menu-btn');
   const sidebar = document.querySelector('.sidebar');
   const closeBtn = document.querySelector('.close-btn');
-  const overlay = document.querySelector('.modal-overlay');
+  const overlay = document.querySelector('.modal-overlay-brg');
 
   if (!burgerBtn) return;
 
