@@ -79,9 +79,7 @@
   align-items: center;
 }
 
-
 .soc-icon.white:focus {
     fill: var(--primary);
     transform: scale(1.1);
 }
-
