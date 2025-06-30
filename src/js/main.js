@@ -96,20 +96,17 @@ const favoriteExercises = [
   },
 ];
 
-
 favoriteExercises.forEach(ex => {
   localStorage.setItem(ex.title, JSON.stringify(ex));
 });
-
 
 const favoriteIds = favoriteExercises.map(ex => ex._id);
 localStorage.setItem('favorites', JSON.stringify(favoriteIds));
 
 document.addEventListener('DOMContentLoaded', function () {
   const favoritesList = document.querySelector('.favorites__list');
-  const emptyMessage = document.querySelector( '.favorites__empty' );
-  const favBody = emptyMessage.closest( '.favorites__body' );
-  
+  const emptyMessage = document.querySelector('.favorites__empty');
+  const favBody = emptyMessage.closest('.favorites__body');
 
   const favorites = [];
 
@@ -122,20 +119,18 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     } catch (err) {
       console.error(err.message);
-      
     }
   }
 
   if (favorites.length === 0) {
     emptyMessage.classList.remove('is-hidden');
-    favoritesList.classList.add( 'is-hidden' );
+    favoritesList.classList.add('is-hidden');
     favBody.classList.remove('center');
     return;
   }
 
   emptyMessage.classList.add('is-hidden');
-  favoritesList.classList.remove( 'is-hidden' );
-  
+  favoritesList.classList.remove('is-hidden');
 
   favorites.forEach(item => {
     const li = document.createElement('li');
@@ -187,20 +182,18 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     favoritesList.appendChild(li);
     li.querySelector('.card__delete').addEventListener('click', function () {
-       
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
       const updatedFavorites = favorites.filter(favId => favId !== item._id);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      
- 
+
       localStorage.removeItem(item.title);
 
       li.remove();
 
       if (favoritesList.children.length === 0) {
         favoritesList.classList.add('is-hidden');
-        emptyMessage.classList.remove( 'is-hidden' );
-        favBody.classList.add('center')
+        emptyMessage.classList.remove('is-hidden');
+        favBody.classList.add('center');
       }
     });
   });

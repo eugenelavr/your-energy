@@ -135,5 +135,4 @@ export const exercisesApi = {
       throw error;
     }
   },
-
 };
