@@ -1,5 +1,5 @@
 const modalsClasses = {
-  IS_OPEN: 'is-open',
+  IS_OPEN: 'modal-open',
   EXERCISE_MODAL_CARD: '.exercise-modal-card',
   RATING_MODAL_RATING_BLOCK: '.rating-modal-rating-block',
   RATING_MODAL_RATING: '.rating-modal-rating',
