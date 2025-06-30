@@ -16,6 +16,7 @@
 .sidebar.active {
   transform: translateX(0);
   transition: var(--transition-fast);
+  pointer-events: auto;
 }
 
 .close-btn {
@@ -66,9 +67,9 @@
 }
 
 .soc-item.white:focus {
-    background-color: rgba(244, 244, 244, 1);
-    transform: scale(1.1);
-} 
+  background-color: rgba(244, 244, 244, 1);
+  transform: scale(1.1);
+}
 
 .soc-icon.white {
   display: flex;
@@ -80,6 +81,26 @@
 }
 
 .soc-icon.white:focus {
-    fill: var(--primary);
-    transform: scale(1.1);
+  fill: var(--primary);
+  transform: scale(1.1);
+}
+
+.modal-overlay-brg {
+  background-color: rgba(var(--rgba-bg-color), 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+.modal-overlay-brg.is-open {
+  opacity: 1;
 }
