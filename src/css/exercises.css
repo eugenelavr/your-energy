@@ -111,7 +111,7 @@
 }
 
 .exercises-info {
-  min-width: 444px;
+  width: 100%;
   gap: 32px;
   display: flex;
   flex-direction: column;
