@@ -1,0 +1,26 @@
+ package-lock.json                    | 723 [32m+++++++[m[31m----------------------------[m
+ package.json                         |  10 [32m+[m[31m-[m
+ src/css/exercises.css                | 368 [31m------------------[m
+ src/css/favorites.css                | 350 [32m+++++++++++++++++[m
+ src/css/hero.css                     |   6 [31m-[m
+ src/css/reset.css                    |   1 [32m+[m
+ src/css/styles.css                   |   1 [31m-[m
+ src/css/variables.css                |   2 [32m+[m[31m-[m
+ src/favorites.html                   |   7 [32m+[m[31m-[m
+ src/img/favorites/fluent.svg         |   3 [32m+[m
+ src/img/favorites/quote.svg          |   5 [32m+[m
+ src/img/favorites/text.svg           |   3 [32m+[m
+ src/img/icons/facebook.svg           |   3 [32m+[m
+ src/img/icons/instagram.svg          |   6 [32m+[m
+ src/img/icons/youtube.svg            |   5 [32m+[m
+ src/img/sprite.svg                   |  25 [32m+[m[31m-[m
+ src/index.html                       |   2 [32m+[m[31m-[m
+ src/js/api-services/exercises-api.js |  27 [32m++[m
+ src/js/api-services/index.js         |   3 [32m+[m
+ src/js/const/modals-classes.js       |   5 [32m+[m[31m-[m
+ src/js/handlers/modals-handlers.js   |   2 [32m+[m[31m-[m
+ src/js/listeners/modals-listeners.js |   2 [32m+[m[31m-[m
+ src/js/main.js                       | 168 [32m++++++++[m
+ src/partials/favorites.html          | 599 [32m+++++++++++++++++++++++++++++[m
+ src/partials/filters.html            |   0
+ 25 files changed, 1348 insertions(+), 978 deletions(-)

@@ -5,25 +5,11 @@ import {
   setupOpenExerciseModalLister,
   setupGiveRatingListener,
 } from './listeners/modals-listeners.js';
-import { subscribeFormListener } from './listeners/subscribeFormListener.js';
-
-import { handleExercises } from './components/exercises.js';
-import { handleQuoteOfDay } from './handlers/static-handlers.js';
-import { initBurgerMenu } from './burger-menu.js';
-import { handleFilterClick } from './handlers/exercises-filtered-handler.js';
-import { headerInit } from './listeners/header-listener.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
   setupOpenExerciseModalLister();
   setupGiveRatingListener();
-  subscribeFormListener();
-  handleQuoteOfDay();
-  handleExercises();
-  handleFilterClick();
-  // renderCategories();
-  initBurgerMenu();
-  headerInit();
 });
 
 document.addEventListener('keydown', event => {
@@ -41,7 +27,6 @@ document.addEventListener('keydown', event => {
 
 const favoriteExercises = [
   {
-    _id: '64f389465ae26083f39b17a2',
     title: 'Air bike',
     burnedCalories: 312,
     time: '3 min',
@@ -50,7 +35,6 @@ const favoriteExercises = [
     favorite: true,
   },
   {
-    _id: '64f389465ae26083f39b17a3',
     title: '3/4 sit-up',
     burnedCalories: 220,
     time: '3 min',
@@ -59,7 +43,6 @@ const favoriteExercises = [
     favorite: true,
   },
   {
-    _id: '64f389465ae26083f39b17a4',
     title: '45° side ben',
     burnedCalories: 323,
     time: '3 min',
@@ -68,7 +51,6 @@ const favoriteExercises = [
     favorite: true,
   },
   {
-    _id: '64f389465ae26083f39b17a5',
     title: 'Barbell reverse preacher curl',
     burnedCalories: 153,
     time: '3 min',
@@ -77,7 +59,6 @@ const favoriteExercises = [
     favorite: true,
   },
   {
-    _id: '64f389465ae26083f39b17a6',
     title: 'Barbell rollerout',
     burnedCalories: 87,
     time: '3 min',
@@ -86,7 +67,6 @@ const favoriteExercises = [
     favorite: true,
   },
   {
-    _id: '64f389465ae26083f39b17a7',
     title: 'Barbell side split squat v. 2',
     burnedCalories: 60,
     time: '3 min',
@@ -205,4 +185,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
