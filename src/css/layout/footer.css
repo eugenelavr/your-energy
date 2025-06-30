@@ -41,7 +41,7 @@
 
 .footer-logo:hover,
 .footer-logo:focus {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 .footer-logo-icon {
@@ -60,7 +60,9 @@
 
   padding: 8px;
 
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .footer-socials-link {
@@ -73,19 +75,21 @@
 
 .footer-social-icon {
   fill: currentColor;
-  transition: transform 0.3s ease, fill 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    fill 0.3s ease;
 }
 
 .footer-socials-item:hover .footer-social-icon,
 .footer-socials-item:focus .footer-social-icon {
-  fill:var(--primary); 
-  transform: scale(1.1); 
+  fill: var(--primary);
+  transform: scale(1.1);
 }
 
 .footer-socials-item:hover,
 .footer-socials-item:focus {
   background-color: rgba(244, 244, 244, 1);
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 .footer-headline-subscribe {
