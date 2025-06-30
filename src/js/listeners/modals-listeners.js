@@ -19,6 +19,8 @@ const handleFavoriteAction = event => {
 
 const handleModalClose = modal => {
   modal.classList.remove(modalsClasses.IS_OPEN);
+  document.documentElement.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
 };
 
 const handleRatingModalOpen = event => {
