@@ -66,9 +66,9 @@
 }
 
 .soc-item.white:focus {
-    background-color: rgba(244, 244, 244, 1);
-    transform: scale(1.1);
-} 
+  background-color: rgba(244, 244, 244, 1);
+  transform: scale(1.1);
+}
 
 .soc-icon.white {
   display: flex;
@@ -79,9 +79,7 @@
   align-items: center;
 }
 
-
 .soc-icon.white:focus {
-    fill: var(--primary);
-    transform: scale(1.1);
+  fill: var(--primary);
+  transform: scale(1.1);
 }
-
