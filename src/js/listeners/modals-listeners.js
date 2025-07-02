@@ -11,16 +11,13 @@ import {
 const handleFavoriteAction = event => {
   const id = event.target.closest(modalsClasses.EXERCISE_MODAL_CARD).dataset.id;
   handleToggleFavorite(id, () => {
-    if (window.location.pathname.includes('favorite.html')) {
-      // need add favorite render function for update
-    }
+    // Callback викликається після успішного оновлення favorites
+    // Додаткова логіка може бути додана тут за потреби
   });
 };
 
 const handleModalClose = modal => {
   modal.classList.remove(modalsClasses.IS_OPEN);
-  document.documentElement.classList.remove('modal-open');
-  document.body.classList.remove('modal-open');
 };
 
 const handleRatingModalOpen = event => {

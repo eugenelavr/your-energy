@@ -1,5 +1,8 @@
 function renderQuote({ quote, author }) {
-  document.querySelector('.js-quote').innerHTML = `
+  const quoteElement = document.querySelector('.js-quote');
+  if (!quoteElement) return;
+
+  quoteElement.innerHTML = `
     <p class="quote-text">"${quote}"</p>
     <p class="quote-signature">- ${author}</p>
   `;

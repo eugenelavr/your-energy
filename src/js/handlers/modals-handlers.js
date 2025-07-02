@@ -3,13 +3,17 @@ import { refs } from '../const/refs.js';
 import { modalsClasses } from '../const/modals-classes.js';
 import { toaster } from '../utils/utils.js';
 import { exercisesApi } from '../api/exercises.api.js';
+import {
+  isFavorite,
+  addToFavorites,
+  removeFromFavorites,
+  updateFavoritesDisplay,
+} from '../components/favorites.js';
 import iconsPath from '../../img/sprite.svg';
 
 async function handleOpenExerciseModal(id) {
   try {
     refs.exerciseModal.classList.add(modalsClasses.IS_OPEN);
-    document.documentElement.classList.add('modal-open');
-    document.body.classList.add('modal-open');
 
     const exercise = await exercisesApi.getExerciseById(id);
 
@@ -21,7 +25,7 @@ async function handleOpenExerciseModal(id) {
 }
 
 function updateButtonsBlock(id) {
-  const isInFavorites = localStorage.getItem('favorites')?.includes(id);
+  const isInFavorites = isFavorite(id);
 
   const favBtn = isInFavorites
     ? `<button id="remove-from-favorites" class="btn btn-primary">
@@ -48,25 +52,46 @@ function updateButtonsBlock(id) {
   }
 }
 
-const handleToggleFavorite = (id, onFavoritesUpdated) => {
+const handleToggleFavorite = async (id, onFavoritesUpdated) => {
   try {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    const isFavorite = favorites.includes(id);
+    const isCurrentlyFavorite = isFavorite(id);
+    let success = false;
 
-    const updatedFavorites = isFavorite
-      ? favorites.filter(favId => favId !== id)
-      : [...favorites, id];
+    if (isCurrentlyFavorite) {
+      success = removeFromFavorites(id);
+      if (success) {
+        toaster.showSuccessToast('Exercise removed from favorites!');
+      }
+    } else {
+      // Отримуємо дані вправи для збереження
+      try {
+        const exerciseData = await exercisesApi.getExerciseById(id);
+        success = addToFavorites(id, exerciseData);
+        if (success) {
+          toaster.showSuccessToast('Exercise added to favorites!');
+        }
+      } catch (apiError) {
+        // Якщо не вдалося отримати дані з API, додаємо тільки ID
+        success = addToFavorites(id);
+        if (success) {
+          toaster.showSuccessToast('Exercise added to favorites!');
+        }
+      }
+    }
 
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    if (success) {
+      updateButtonsBlock(id);
 
-    toaster.showSuccessToast(
-      `Exercise ${isFavorite ? 'removed from' : 'added to'} favorites!`
-    );
+      // Оновлюємо відображення favorites якщо знаходимося на сторінці favorites
+      if (window.location.pathname.includes('favorites.html')) {
+        updateFavoritesDisplay();
+      }
 
-    updateButtonsBlock(id);
-    onFavoritesUpdated();
+      onFavoritesUpdated();
+    }
   } catch (error) {
-    toaster.showErrorToast(error.message);
+    console.error('Error toggling favorite:', error);
+    toaster.showErrorToast('Error updating favorites');
   }
 };
 
