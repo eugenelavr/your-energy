@@ -1,20 +1,17 @@
+import { doc } from 'prettier';
 import { exercisesApi } from '../api';
 import { renderFilteredExercises } from '../components/render-filtered-exercises';
 
+const hideShow = (toHide, toShow) => {
+  if (toHide) {
+    toHide.classList.add('hide');
+  }
+  if (toShow) {
+    toShow.classList.remove('hide');
+  }
+};
 const breadcrumbState = {
   currentFilter: null,
-  currentCategory: null,
-};
-
-const hide = el => {
-  if (el) {
-    el.classList.add('hide');
-  }
-};
-const show = el => {
-  if (el) {
-    el.classList.remove('hide');
-  }
 };
 
 const updateBreadcrumbUI = () => {
@@ -32,55 +29,6 @@ const updateBreadcrumbUI = () => {
   }
 };
 
-const debounce = (fn, delay = 500) => {
-  let timeoutId;
-  return (...args) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn(...args), delay);
-  };
-};
-const handleSearchTerm = debounce(async (searchTerm, page = 1, limit = 10) => {
-  const keyword = searchTerm.trim();
-  if (!keyword) return;
-  const category = breadcrumbState.currentCategory || '';
-  const filter = breadcrumbState.currentFilter || '';
-  if (!filter && !keyword && !category) {
-    return;
-  }
-
-  console.log(
-    `Searching for exercises with keyword: "${keyword}" in category: "${category}" and filter: "${filter}"`
-  );
-
-  const filters = {
-    ...(category === 'Muscles' && { muscles: filter }),
-    ...(category === 'Body parts' && { bodypart: filter }),
-    ...(category === 'Equipment' && { equipment: filter }),
-  };
-
-  const hasFilter = filters.muscles || filters.bodypart || filters.equipment;
-
-  const params = {
-    filters: {
-      muscles: category === 'Muscles' ? filter : '',
-      bodypart: category === 'Body parts' ? filter : '',
-      equipment: category === 'Equipment' ? filter : '',
-    },
-    search: hasFilter ? keyword : '',
-    page,
-    limit,
-  };
-  const res = await exercisesApi.getExercisesFilteredOrSearched(params);
-  console.log(`Search results for "${keyword}":`, res);
-  renderFilteredExercises(res.results);
-  renderFilteredExercisesPagination(
-    res.totalPages,
-    res.page,
-    'Keyword',
-    keyword
-  );
-}, 500);
-
 export const handleFilterClick = (category, filterName, page, limit) => {
   const params = {
     filters: {
@@ -96,24 +44,15 @@ export const handleFilterClick = (category, filterName, page, limit) => {
       const res = await exercisesApi.getExercisesFilteredOrSearched(params);
       if (!res || !res.results || res.results.length === 0) {
         console.error('No exercises found for the selected filters.');
-
-        const wrapper = document.querySelector(
-          '.filtered-exercises-cards-wrapper'
-        );
-        if (wrapper) {
-          wrapper.innerHTML =
-            '<div class="no-exercises-message"><p>No exercises found for the selected filters.</p></div>';
-          show(wrapper);
-        }
         return;
       }
-      hide(document.querySelector('.exercises-content'));
-      show(document.querySelector('.filtered-exercises-cards-wrapper'));
-      show(document.querySelector('.form-search'));
-
+      hideShow(
+        document.querySelector('.exercises-content'),
+        document.querySelector('.filtered-exercises-cards-wrapper')
+      );
       breadcrumbState.currentFilter = filterName;
-      breadcrumbState.currentCategory = category;
       const exercises = res.results;
+
       renderFilteredExercises(exercises);
       renderFilteredExercisesPagination(
         res.totalPages,
@@ -222,30 +161,10 @@ document
 document
   .querySelector('.breadcrumb-home')
   ?.addEventListener('click', async () => {
-    hide(document.querySelector('.filtered-exercises-cards-wrapper'));
-    hide(document.querySelector('.form-search'));
-    show(document.querySelector('.exercises-content'));
-
+    hideShow(
+      document.querySelector('.filtered-exercises-cards-wrapper'),
+      document.querySelector('.exercises-content')
+    );
     breadcrumbState.currentFilter = null;
     updateBreadcrumbUI();
   });
-
-const searchInput = document.querySelector('.search-input');
-const form = document.getElementById('search-form');
-if (searchInput && form) {
-  searchInput.addEventListener('input', e => {
-    const searchTerm = e.target.value.trim();
-    handleSearchTerm(searchTerm);
-  });
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const searchTerm = searchInput.value.trim();
-    if (searchTerm) {
-      handleSearchTerm(searchTerm);
-      form.reset();
-    }
-  });
-} else {
-  console.error('Search input or form not found');
-}

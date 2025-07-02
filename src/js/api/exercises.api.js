@@ -74,26 +74,47 @@ export const exercisesApi = {
   },
   async getExercisesFilteredOrSearched(params = {}) {
     try {
-      const { filters = {}, search, page, limit } = params;
-      const { bodypart, muscles, equipment } = filters;
+      const { filters = {}, page, limit } = params;
+      const { bodypart, muscles, equipment, keyword } = filters;
 
-      const hasFilter = bodypart || muscles || equipment;
+      const queryParams = new URLSearchParams();
 
-      const query = {
-        ...(bodypart && { bodypart }),
-        ...(muscles && { muscles }),
-        ...(equipment && { equipment }),
-        ...(hasFilter && search && { keyword: search }),
-        ...(page !== undefined && { page }),
-        ...(limit !== undefined && { limit }),
-      };
+      if (bodypart) queryParams.append('bodypart', bodypart);
+      if (muscles) queryParams.append('muscles', muscles);
+      if (equipment) queryParams.append('equipment', equipment);
+      if (keyword) queryParams.append('keyword', keyword);
+      if (page !== undefined) queryParams.append('page', String(page));
+      if (limit !== undefined) queryParams.append('limit', String(limit));
 
-      const res = await client.get('/exercises', { params: query });
+      const res = await client.get(`/exercises`, {
+        params: Object.fromEntries(queryParams.entries()),
+      });
 
       return res.data;
     } catch (error) {
-      console.error(`Error fetching filtered exercises: ${error}`);
-      toaster.showErrorToast(`Ooops, try again. Something went wrong!`);
+      toaster.showErrorToast(`Error fetching filtered exercises: ${error}`);
+      throw error;
+    }
+  },
+
+  async getExerciseById(id) {
+    try {
+      const { data } = await axios.get(`${API_URL}/exercises/${id}`);
+      return data;
+    } catch (error) {
+      toaster.showErrorToast(`Error fetching exercise by ID: ${error}`);
+      throw error;
+    }
+  },
+
+  async updateRating(id, rating) {
+    try {
+      const { data } = await axios.patch(
+        `${API_URL}/exercises/${id}/rating`,
+        rating
+      );
+      return data;
+    } catch (error) {
       throw error;
     }
   },

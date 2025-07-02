@@ -40,7 +40,6 @@ document.addEventListener('keydown', event => {
   }
 });
 
-
 // Додатковий listener для оновлення favorites на сторінці favorites
 document.addEventListener('DOMContentLoaded', function () {
   // Оновлюємо відображення favorites якщо знаходимося на сторінці favorites
@@ -48,4 +47,3 @@ document.addEventListener('DOMContentLoaded', function () {
     updateFavoritesDisplay();
   }
 });
-
