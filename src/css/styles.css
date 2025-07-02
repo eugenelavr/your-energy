@@ -1,6 +1,6 @@
 @import 'modern-normalize/modern-normalize.css';
 @import 'izitoast/dist/css/iziToast.min.css';
-@import './common.css';
+
 @import './font.css';
 @import './variables.css';
 @import './reset.css';
@@ -19,3 +19,4 @@
 @import './categories.css';
 @import './filtered-exercises.css';
 @import './breadcrumbs.css';
+@import './common.css';
