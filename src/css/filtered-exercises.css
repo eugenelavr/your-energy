@@ -10,11 +10,10 @@
 
 .hide-show-transition.hide {
   visibility: hidden;
+  display: none;
   pointer-events: none;
   opacity: 0;
-  transition:
-    opacity 0.3s ease-in-out,
-    visibility 0.3s ease;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease;
   position: absolute;
 }
 
@@ -42,6 +41,7 @@
     &:hover {
       transform: translateY(-5px);
     }
+
     .exercise-header {
       display: flex;
       justify-content: start;
@@ -49,6 +49,7 @@
       font-size: 12px;
       margin-bottom: 24px;
       text-transform: capitalize;
+
       .badge {
         font-size: 12px;
         margin-right: 24px;
@@ -65,6 +66,7 @@
         line-height: 1.5;
         margin-right: 4px;
       }
+
       .rating-icon {
         width: 16px;
         height: 16px;
@@ -83,6 +85,7 @@
         margin: 0 0 0 auto;
       }
     }
+
     .exercise-content {
       display: flex;
       align-items: center;
@@ -97,12 +100,14 @@
         overflow: hidden;
         white-space: nowrap;
       }
+
       .exercise-icon {
         height: 24px;
         width: 24px;
         fill: currentColor;
       }
     }
+
     .exercise-meta {
       display: flex;
       gap: 8px;
@@ -112,6 +117,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+
       p {
         margin: 0;
         padding: 0;
@@ -120,6 +126,7 @@
         font-weight: 400;
         line-height: 1.5;
       }
+
       .meta-span {
         text-transform: capitalize;
         color: var(--primary);
@@ -195,14 +202,12 @@
   .filtered-exercises-cards-wrapper .filtered-exercise-card {
     padding: 16px 20px;
   }
+
   .filtered-exercises-cards-wrapper .filtered-exercise-card .exercise-content {
     margin-bottom: 8px;
   }
 
-  .filtered-exercises-cards-wrapper
-    .filtered-exercise-card
-    .exercise-content
-    .exercise-title {
+  .filtered-exercises-cards-wrapper .filtered-exercise-card .exercise-content .exercise-title {
     font-size: 24px;
   }
 }

@@ -7,10 +7,20 @@
       <span class="breadcrumb-divider">/</span>
       <span class="breadcrumb-current"></span>
     </div>
-
+    <div class="filter-search-wrapper">
+      <form class="form-search hide-show-transition hide" id="search-form">
+        <label class="search-label" for="exercises-filter"></label>
+        <input
+          type="text"
+          class="search-input hide"
+          id="exercises-filter"
+          placeholder="Search exercises..."
+        />
+        <button class="clear-search" type="button" aria-label="Clear search">x</button>
+      </form>
+    </div>
     <ul class="exercises-categories"></ul>
   </div>
-
   <div class="exercises-container">
     <load src="partials/quote.html" />
 
