@@ -44,6 +44,7 @@ export const exercisesApi = {
     }
   },
 
+
   async quoteOfDay() {
     try {
       const { data } = await client.get('/quote');
