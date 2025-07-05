@@ -8,8 +8,6 @@ import iconsPath from '../../img/sprite.svg';
 async function handleOpenExerciseModal(id) {
   try {
     refs.exerciseModal.classList.add(modalsClasses.IS_OPEN);
-    document.documentElement.classList.add('modal-open');
-    document.body.classList.add('modal-open');
 
     const exercise = await exercisesApi.getExerciseById(id);
 
