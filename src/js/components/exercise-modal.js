@@ -1,5 +1,4 @@
 import iconsPath from '../../img/sprite.svg';
-import { isFavorite } from './favorites.js';
 
 function renderExerciseModal({
   _id,
@@ -23,7 +22,7 @@ function renderExerciseModal({
             </svg>`;
   }).join('');
 
-  const isInFavorites = isFavorite(_id);
+  const isInFavorites = localStorage.getItem('favorites')?.includes(_id);
 
   return `<div data-id=${_id} class="exercise-modal-card">
             <button class="close-modal-btn">
