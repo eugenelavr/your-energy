@@ -82,6 +82,9 @@ const renderFilters = async (category, page) => {
 };
 
 export const handleExercises = () => {
+  // Check if elements exist (they don't exist on favorites page)
+  if (!categoriesEl || !exercisesEl || !exercisesPaginationEl) return;
+
   renderCategories(selectedCategory);
   renderFilters(selectedCategory, 1);
 

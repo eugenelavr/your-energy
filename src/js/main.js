@@ -12,6 +12,7 @@ import { handleQuoteOfDay } from './handlers/static-handlers.js';
 import { initBurgerMenu } from './burger-menu.js';
 import { handleFilterClick } from './handlers/exercises-filtered-handler.js';
 import { headerInit } from './listeners/header-listener.js';
+import { updateFavoritesDisplay } from './components/favorites.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupModalsListeners();
@@ -36,5 +37,13 @@ document.addEventListener('keydown', event => {
       refs.ratingModal.classList.remove(modalsClasses.IS_OPEN);
       refs.exerciseModal.classList.add(modalsClasses.IS_OPEN);
     }
+  }
+});
+
+// Додатковий listener для оновлення favorites на сторінці favorites
+document.addEventListener('DOMContentLoaded', function () {
+  // Оновлюємо відображення favorites якщо знаходимося на сторінці favorites
+  if (window.location.pathname.includes('favorites.html')) {
+    updateFavoritesDisplay();
   }
 });
