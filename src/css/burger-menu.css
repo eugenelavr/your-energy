@@ -79,6 +79,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .soc-icon.white:focus {
   fill: var(--primary);
   transform: scale(1.1);
@@ -103,4 +104,3 @@
 .modal-overlay-brg.is-open {
   opacity: 1;
 }
-
