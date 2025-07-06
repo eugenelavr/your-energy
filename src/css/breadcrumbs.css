@@ -1,19 +1,21 @@
 .exercises-breadcrumbs {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .breadcrumb-home {
   background: none;
   border: none;
-  color: var(--color-primary);
+  color: var(--primary);
   cursor: pointer;
 }
 
 .breadcrumb-divider {
-  font-size: 24px;
+  font-size: 28px;
   margin: 0 16px;
-  color: var(--text-secondary);
+  color: var(--primary);
 }
 
 .breadcrumb-current {
