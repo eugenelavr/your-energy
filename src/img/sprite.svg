@@ -114,9 +114,8 @@
 	</symbol>
 
 	<symbol id="search" viewBox="0 0 32 32">
-		<path stroke="#242424" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4"
-			stroke-width="2.6667"
-			d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667s-4.776-10.667-10.667-10.667v0c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667v0zM28 28l-5.801-5.799"></path>
+    <path d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.7498 15.75L12.4873 12.4875" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 	</symbol>
 
 	<symbol id="running-stick-figure-border" viewBox="0 0 32 32">
